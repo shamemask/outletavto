@@ -2,7 +2,7 @@
 FROM python:3.9-slim-buster
 
 # Установка Nginx
-RUN apt-get update && apt-get install -y nginx
+RUN apt-get update  && apt-get install -y apt-utils && apt-get install -y nginx
 
 # Настройка конфигурации Nginx
 COPY outletauto_nginx.conf /etc/nginx/sites-available/
