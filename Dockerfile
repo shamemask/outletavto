@@ -1,31 +1,28 @@
-# Определение базового образа
-FROM python:3.9-slim-buster
+# Установка базового образа
+FROM python:3.9
 
-# Установка Nginx
-RUN apt-get update  && apt-get install -y apt-utils && apt-get install -y nginx
-
-# Настройка конфигурации Nginx
-COPY outletauto_nginx.conf /etc/nginx/sites-available/
-RUN ln -s /etc/nginx/sites-available/outletauto_nginx.conf /etc/nginx/sites-enabled/
-
-# Настройка рабочей директории
-WORKDIR /app
-
-# Копирование зависимостей приложения
-COPY requirements.txt .
-
-# Установка зависимостей
-RUN python -m pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
-
-# Копирование исходных файлов приложения
+# Копирование кода приложения
+WORKDIR /usr/src/app
 COPY . .
 
-# Запуск миграций базы данных
-# RUN python manage.py migrate
-# Установка переменных среды
-# ENV DJANGO_SETTINGS_MODULE=myproject.settings.production
-# Открытие порта
-EXPOSE 8000
+# Установка пакетов
+RUN apt-get update && \
+    apt-get install -y nginx supervisor && \
+    pip install --no-cache-dir -r requirements.txt
 
-# Запуск сервера Django через Gunicorn через Nginx
-CMD [“gunicorn”, “–bind”, “0.0.0.0:8000”, “wsgi:application”]
+# Копирование файлов конфигурации Nginx и Gunicorn
+COPY infrastructure/nginx.conf /etc/nginx/sites-available/
+COPY infrastructure/gunicorn.conf /etc/supervisor/conf.d/
+
+# Настройка Nginx
+RUN ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/ && \
+    rm /etc/nginx/sites-enabled/default
+
+# Установка зависимостей Python, создание таблиц базы данных, сборка статической версии файлов и запуск сервера Gunicorn
+RUN python manage.py migrate --noinput && \
+    python manage.py collectstatic --noinput && \
+    echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@example.com', 'admin')" | python manage.py shell && \
+    chmod +x /usr/src/app/run.sh
+
+# Запуск Nginx и сервера Gunicorn
+CMD ["/usr/bin/supervisord", "-n"]
