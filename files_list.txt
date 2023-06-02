@@ -8,7 +8,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'outletavto.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -201,7 +201,7 @@ file myapp\templates\index.html
     <li><a href="{% url 'image_detail' image_name %}">{{ image_name }}</a></li>
     {% endfor %}
 </ul>
-    <img src="{% static 'главная' %}.png" alt="{{ 'главная' }}">
+    <img src="{% static 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅ' %}.png" alt="{{ 'пїЅпїЅпїЅпїЅпїЅпїЅпїЅ' }}">
 </div>
 {% endblock %}
 '''
@@ -222,11 +222,11 @@ file myapp\templates\outletauto\index.html
                             <img src="{% static 'outletauto/assets/imgs/logotype.svg' %}" alt="logotype" class="logotype">
                         </div>
                         <form class="header-search search" action="#">
-                            <input type="text" class="search-input" placeholder="Поиск по артикулу или VIN коду">
-                            <button class="search-btn red-btn">Найти</button>
+                            <input type="text" class="search-input" placeholder="пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ VIN пїЅпїЅпїЅпїЅ">
+                            <button class="search-btn red-btn">пїЅпїЅпїЅпїЅпїЅ</button>
                         </form>
                         <ul class="header-contact">
-                            <li><a href="#">Адреса магазинов</a></li>
+                            <li><a href="#">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</a></li>
                             <li><a href="#">8 (800) 777-99-80</a></li>
                         </ul>
                     </div>
@@ -239,12 +239,12 @@ file myapp\templates\outletauto\index.html
                             </div>
                         </div>
                         <ul class="header-nav">
-                            <li><a href="#">Оплатить заказ</a></li>
-                            <li><a href="#">Каталог</a></li>
-                            <li><a href="#">Новости</a></li>
+                            <li><a href="#">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ</a></li>
+                            <li><a href="#">пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</a></li>
+                            <li><a href="#">пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</a></li>
                         </ul>
                         <ul class="header-account">
-                            <li><a href="#">Личный кабинет</a></li>
+                            <li><a href="#">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</a></li>
                         </ul>
                     </div>
                 </div>
@@ -259,16 +259,16 @@ file myapp\templates\outletauto\index.html
                         </div>
                         <form class="header-search search" action="#">
                             <input id="header-search" type="text" class="search-input"
-                                placeholder="Поиск по артикулу или VIN коду">
-                            <button class="search-btn red-btn">Найти</button>
+                                placeholder="пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ VIN пїЅпїЅпїЅпїЅ">
+                            <button class="search-btn red-btn">пїЅпїЅпїЅпїЅпїЅ</button>
                         </form>
                     </div>
                     <div class="header-row-2">
                         <ul class="header-account">
-                            <li><a href="#">Личный кабинет</a></li>
+                            <li><a href="#">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</a></li>
                         </ul>
                         <ul class="header-contact">
-                            <li><a href="#">Адреса магазинов</a></li>
+                            <li><a href="#">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</a></li>
                             <li><a href="#">8 (800) 777-99-80</a></li>
                         </ul>
                     </div>
@@ -278,19 +278,19 @@ file myapp\templates\outletauto\index.html
         <div class="container">
             <div class="offer-content">
                 <div class="content-wrapper">
-                    <h1 class="title">Запчасти в интернет-магазине OutletAuto</h1>
+                    <h1 class="title">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ OutletAuto</h1>
 
                     <div class="content-column">
                         <div>
                             <div class="content-search-wrapper">
                                 <form class="content-search search" action="#">
                                     <input id="header-search" type="text" class="search-input"
-                                        placeholder="Поиск по артикулу или VIN коду">
-                                    <button class="search-btn red-btn">Найти</button>
+                                        placeholder="пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ VIN пїЅпїЅпїЅпїЅ">
+                                    <button class="search-btn red-btn">пїЅпїЅпїЅпїЅпїЅ</button>
                                 </form>
                                 <div class="example">
-                                    <span>Например: WUBH54B11N111054 </span>
-                                    <span>Что такое VIN-код и FRAME?</span>
+                                    <span>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: WUBH54B11N111054 </span>
+                                    <span>пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ VIN-пїЅпїЅпїЅ пїЅ FRAME?</span>
                                 </div>
                             </div>
                             <div class="transparent-wrapper transparent-wrapper-pc">
@@ -299,14 +299,14 @@ file myapp\templates\outletauto\index.html
                                         <span></span>
                                         <span></span>
                                     </div>
-                                    Каталоги
+                                    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                                 </button>
                                 <button class="transparent-btn">
                                     <div class="arrow">
                                         <span></span>
                                         <span></span>
                                     </div>
-                                    Популярные детали
+                                    пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
                                 </button>
                             </div>
                         </div>
@@ -318,7 +318,7 @@ file myapp\templates\outletauto\index.html
                                             <img src="{% static 'outletauto/assets/imgs/icon/bi_people.svg' %}" alt="present">
                                         </div>
                                     </div>
-                                    <span>Вступить в клуб</span>
+                                    <span>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ</span>
                                 </a>
                             </div>
                             <div class="circle-btn-wrapper">
@@ -328,7 +328,7 @@ file myapp\templates\outletauto\index.html
                                             <img src="{% static 'outletauto/assets/imgs/icon/present.svg' %}" alt="present">
                                         </div>
                                     </div>
-                                    <span>Получить подарок</span>
+                                    <span>пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
                                 </a>
                             </div>
                         </div>
@@ -338,14 +338,14 @@ file myapp\templates\outletauto\index.html
                                     <span></span>
                                     <span></span>
                                 </div>
-                                Каталоги
+                                пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                             </button>
                             <button class="transparent-btn">
                                 <div class="arrow">
                                     <span></span>
                                     <span></span>
                                 </div>
-                                Популярные детали
+                                пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
                             </button>
                         </div>
                     </div>
@@ -369,44 +369,44 @@ file myapp\templates\outletauto\index.html
     </div>
     <div class="catalog">
         <div class="container">
-            <h2 class="greeting">Универсальный каталог</h2>
+            <h2 class="greeting">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</h2>
             <form class="catalog-search search" action="#">
-                <span class="parameters">Подбор по параметрам</span>
-                <input type="text" class="search-input" placeholder="Поиск по артикулу или VIN коду">
-                <button class="search-btn red-btn">Найти</button>
+                <span class="parameters">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
+                <input type="text" class="search-input" placeholder="пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ VIN пїЅпїЅпїЅпїЅ">
+                <button class="search-btn red-btn">пїЅпїЅпїЅпїЅпїЅ</button>
             </form>
             <div class="catalog-grid">
                 <div class="catalog-card">
-                    <span class="catalog-greeting">Масла и технические жидкости</span>
-                    <span class="catalog-desc">Поиск технических жидкостей по  параметрам</span>
+                    <span class="catalog-greeting">пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
+                    <span class="catalog-desc">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
                 </div>
                 <div class="catalog-card">
-                    <span class="catalog-greeting">Шины и диски</span>
-                    <span class="catalog-desc">Поиск шин и дисков по  параметрам</span>
+                    <span class="catalog-greeting">пїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ</span>
+                    <span class="catalog-desc">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
                 </div>
                 <div class="catalog-card">
-                    <span class="catalog-greeting">Автохимия и косметика</span>
-                    <span class="catalog-desc">Поиск продукции за уходом автомобиля</span>
+                    <span class="catalog-greeting">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
+                    <span class="catalog-desc">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
                 </div>
                 <div class="catalog-card">
-                    <span class="catalog-greeting">Автопринадлежности</span>
-                    <span class="catalog-desc">Поиск аксессуаров для автомобиля</span>
+                    <span class="catalog-greeting">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
+                    <span class="catalog-desc">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
                 </div>
                 <div class="catalog-card">
-                    <span class="catalog-greeting">Товары для дома</span>
-                    <span class="catalog-desc">Поиск аксессуаров и бытовой техники</span>
+                    <span class="catalog-greeting">пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ</span>
+                    <span class="catalog-desc">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
                 </div>
                 <div class="catalog-card">
-                    <span class="catalog-greeting">Инструменты</span>
-                    <span class="catalog-desc">Поиск оборудования для автомобиля и дома</span>
+                    <span class="catalog-greeting">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
+                    <span class="catalog-desc">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ</span>
                 </div>
                 <div class="catalog-card">
-                    <span class="catalog-greeting">Сувенирная продукция</span>
-                    <span class="catalog-desc">Поиск аксессуаров с  фирменной символикой</span>
+                    <span class="catalog-greeting">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
+                    <span class="catalog-desc">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ  пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
                 </div>
                 <div class="catalog-card">
-                    <span class="catalog-greeting">Автозапчасти</span>
-                    <span class="catalog-desc">Поиск автозапчастей</span>
+                    <span class="catalog-greeting">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
+                    <span class="catalog-desc">пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</span>
                 </div>
             </div>
         </div>
@@ -415,10 +415,10 @@ file myapp\templates\outletauto\index.html
 {% endblock %}
 '''
 
-file myproject\asgi.py
+file outletavto\asgi.py
 '''
 """
-ASGI config for myproject project.
+ASGI config for outletavto project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -430,16 +430,16 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'outletavto.settings')
 
 application = get_asgi_application()
 
 '''
 
-file myproject\settings.py
+file outletavto\settings.py
 '''
 """
-Django settings for myproject project.
+Django settings for outletavto project.
 
 Generated by 'django-admin startproject' using Django 4.2.
 
@@ -491,7 +491,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'myproject.urls'
+ROOT_URLCONF = 'outletavto.urls'
 
 TEMPLATES = [
     {
@@ -509,7 +509,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'myproject.wsgi.application'
+WSGI_APPLICATION = 'outletavto.wsgi.application'
 
 
 # Database
@@ -569,10 +569,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 '''
 
-file myproject\urls.py
+file outletavto\urls.py
 '''
 """
-URL configuration for myproject project.
+URL configuration for outletavto project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
@@ -598,10 +598,10 @@ urlpatterns = [
 
 '''
 
-file myproject\wsgi.py
+file outletavto\wsgi.py
 '''
 """
-WSGI config for myproject project.
+WSGI config for outletavto project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -613,13 +613,13 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'outletavto.settings')
 
 application = get_wsgi_application()
 
 '''
 
-file myproject\__init__.py
+file outletavto\__init__.py
 '''
 
 '''
