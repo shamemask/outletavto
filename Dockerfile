@@ -28,4 +28,4 @@ COPY . .
 EXPOSE 8000
 
 # Запуск сервера Django через Gunicorn через Nginx
-CMD [“gunicorn”, “–bind”, “0.0.0.0:8000”, “myproject.wsgi:application”]
+CMD service nginx start && gunicorn --bind 0.0.0.0:8000 wsgi:app
