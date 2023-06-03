@@ -1,28 +1,27 @@
-# Установка базового образа
-FROM python:3.9
+# Определение базового образа
+FROM python:3.9-slim-buster
 
-# Копирование кода приложения
-WORKDIR /usr/src/app
+# Настройка рабочей директории
+WORKDIR /app
+
+# Копирование зависимостей приложения
+COPY requirements.txt .
+
+# Установка зависимостей
+RUN python -m pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+
+# Копирование исходных файлов приложения
 COPY . .
 
-# Установка пакетов
-RUN apt-get update && \
-    apt-get install -y nginx supervisor && \
-    pip install --no-cache-dir -r requirements.txt
+# Запуск миграций базы данных
+# RUN python manage.py migrate
 
-# Копирование файлов конфигурации Nginx и Gunicorn
-COPY infrastructure/nginx.conf /etc/nginx/sites-available/
-COPY infrastructure/gunicorn.conf /etc/supervisor/conf.d/
+# Установка переменных среды
+# ENV DJANGO_SETTINGS_MODULE=myproject.settings.production
 
-# Настройка Nginx
-RUN ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/ && \
-    rm /etc/nginx/sites-enabled/default
+# Открытие порта
+EXPOSE 8000
 
-# Установка зависимостей Python, создание таблиц базы данных, сборка статической версии файлов и запуск сервера Gunicorn
-RUN python manage.py migrate --noinput && \
-    python manage.py collectstatic --noinput && \
-    echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@example.com', 'admin')" | python manage.py shell && \
-    chmod +x /usr/src/app/run.sh
 
-# Запуск Nginx и сервера Gunicorn
-CMD ["/usr/bin/supervisord", "-n"]
+# Запуск сервера Django
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
