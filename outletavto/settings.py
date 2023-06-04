@@ -17,7 +17,6 @@ BASE_DIR2 = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-ALLOWED_HOSTS = ['5.63.155.57','outletavto.ru']
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -27,7 +26,7 @@ SECRET_KEY = 'django-insecure-p)ophp_2lp@h27(jlomu&%v64lq=s%$_c6mv(&tzqeu=npim54
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['xn--061-3edaa.xn--p1ai','outletavto-shamemask.b4a.run','127.0.0.1']
+ALLOWED_HOSTS = ['xn--061-3edaa.xn--p1ai','outletavto-shamemask.b4a.run','127.0.0.1','5.63.155.57','outletavto.ru']
 
 
 # Application definition
