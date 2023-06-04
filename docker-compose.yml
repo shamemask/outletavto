@@ -1,16 +1,10 @@
 version: '3'
 
 services:
-  db:
-    image: postgres
-    environment:
-      POSTGRES_DB: myprojectdb
-      POSTGRES_USER: myprojectuser
-      POSTGRES_PASSWORD: myprojectpassword
 
   web:
     build: .
-    command: gunicorn --bind 0.0.0.0:8000 myproject.wsgi:application
+    command: gunicorn --bind 0.0.0.0:8000 outletavto.wsgi:application
     volumes:
       - .:/app
     ports:
