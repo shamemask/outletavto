@@ -1,6 +1,9 @@
 # Определение базового образа
 FROM python:3.9-slim-buster
 
+# Установим зависимости
+RUN apt-get update -y && apt-get install -y libpq-dev nginx
+
 # Настройка рабочей директории
 WORKDIR /app
 
@@ -24,4 +27,4 @@ EXPOSE 8000
 
 
 # Запуск сервера Django
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD gunicorn --bind 0.0.0.0:5000 wsgi:app
