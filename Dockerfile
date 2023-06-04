@@ -5,7 +5,7 @@ FROM python:3.9-slim-buster
 RUN apt-get update -y && apt-get install -y libpq-dev nginx
 
 # Настройка рабочей директории
-WORKDIR /app
+WORKDIR /srv/www/outletavto
 
 # Копирование зависимостей приложения
 COPY requirements.txt .
@@ -27,4 +27,4 @@ EXPOSE 8000
 
 
 # Запуск сервера Django
-CMD gunicorn --bind 0.0.0.0:5000 wsgi:app
+# CMD gunicorn --bind 0.0.0.0:5000 wsgi:app

@@ -2,19 +2,26 @@ version: '3'
 
 services:
 
-  web:
+  python:
+    restart: always
     build: .
     command: gunicorn --bind 0.0.0.0:8000 outletavto.wsgi:application
     volumes:
-      - .:/app
+      - ./outletavto:/srv/www/<project>
+    expose:
+      - 8000
     ports:
-      - "8000:8000"
+      - 8000:8000
 
   nginx:
+    restart: always
     image: nginx:latest
+    expose:
+      - 8080
     ports:
-      - "80:80"
+      - "80:8080"
     depends_on:
-      - web
+      - python
     volumes:
       - ./nginx:/etc/nginx/conf.d
+      - ./outletavto/static:/srv/www/outletavto/static
