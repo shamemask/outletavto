@@ -1,2 +1,2 @@
-# outletauto
+# outletavto
 Верстка ouletavto.
