@@ -31,10 +31,10 @@ COPY . .
 EXPOSE 8000
 
 # Очистка кэша pip
-RUN pip cache purge
+# RUN pip cache purge
 
 # Сборка статических файлов Django
-RUN python manage.py collectstatic --noinput
+# RUN python manage.py collectstatic --noinput
 
 # Запуск Gunicorn
-CMD gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
+# CMD gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
