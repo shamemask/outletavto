@@ -1,12 +1,18 @@
 # Определение базового образа
 FROM python:3.9-slim-buster
 
+# create directory for the app user
+RUN mkdir -p /srv/www
+
 # Установим зависимости
 RUN apt-get update -y && apt-get install -y libpq-dev nginx mc
 
 # Настройка рабочей директории
-WORKDIR /srv/www/outletavto
-
+ENV HOME=/srv/www/
+ENV APP_HOME=/srv/www/outletavto
+RUN mkdir $APP_HOME
+RUN mkdir $APP_HOME/static
+WORKDIR $APP_HOME
 
 # Копирование зависимостей приложения
 COPY requirements.txt .
@@ -16,7 +22,7 @@ RUN python -m pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 # Копирование исходных файлов приложения
-COPY . .
+COPY . $APP_HOME
 
 # Запуск миграций базы данных
 # RUN python manage.py migrate
