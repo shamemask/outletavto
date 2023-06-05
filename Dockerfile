@@ -11,7 +11,8 @@ WORKDIR /srv/www/outletavto
 COPY requirements.txt .
 
 # Установка зависимостей
-RUN python -m pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+RUN python -m pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Копирование исходных файлов приложения
 COPY . .
@@ -24,6 +25,9 @@ COPY . .
 
 # Открытие порта
 EXPOSE 8000
+
+# Очистка кэша pip
+RUN pip cache purge
 
 
 # Запуск сервера Django
