@@ -123,14 +123,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    os.path.join(BASE_DIR, "images"),
-]
-print(STATICFILES_DIRS)
-onlyfiles = [f for f in listdir(os.path.join(BASE_DIR, "static")) if isfile(join(os.path.join(BASE_DIR, "static"), f))]
-print(onlyfiles)
-# STATIC_ROOT = '/srv/www/outletavto/static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+#     os.path.join(BASE_DIR, "images"),
+# ]
+# print(STATICFILES_DIRS)
+# onlyfiles = [f for f in listdir(os.path.join(BASE_DIR, "static")) if isfile(join(os.path.join(BASE_DIR, "static"), f))]
+# print(onlyfiles)
+STATIC_ROOT = '/srv/www/outletavto/static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

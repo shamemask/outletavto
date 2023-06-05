@@ -23,8 +23,10 @@ COPY . .
 # Копирование статических файлов
 COPY static /srv/www/outletavto/static
 
+python manage.py collectstatic
+
 # Открытие порта
 EXPOSE 8000
 
 # Запуск Gunicorn
-CMD gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
+# CMD gunicorn outletavto.wsgi:application --bind 0.0.0.0:8000
