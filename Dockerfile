@@ -1,18 +1,11 @@
 # Определение базового образа
 FROM python:3.9-slim-buster
 
-# create directory for the app user
-RUN mkdir -p /srv/www
-
 # Установим зависимости
 RUN apt-get update -y && apt-get install -y libpq-dev nginx mc
 
 # Настройка рабочей директории
-ENV HOME=/srv/www/
-ENV APP_HOME=/srv/www/outletavto
-RUN mkdir $APP_HOME
-RUN mkdir $APP_HOME/static
-WORKDIR $APP_HOME
+WORKDIR /srv/www/outletavto
 
 # Копирование зависимостей приложения
 COPY requirements.txt .
@@ -22,25 +15,16 @@ RUN python -m pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 # Копирование исходных файлов приложения
-COPY . $APP_HOME
+COPY . .
 
 # Запуск миграций базы данных
 # RUN python manage.py migrate
 
-# COPY static /srv/www/outletavto/static
-
-
-# Установка переменных среды
-# ENV DJANGO_SETTINGS_MODULE=myproject.settings.production
+# Копирование статических файлов
+COPY static /srv/www/outletavto/static
 
 # Открытие порта
 EXPOSE 8000
 
-# Очистка кэша pip
-# RUN pip cache purge
-
-# Сборка статических файлов Django
-# RUN python manage.py collectstatic --noinput
-
 # Запуск Gunicorn
-# CMD gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
+CMD gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
