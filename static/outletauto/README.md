@@ -1,2 +1,0 @@
-# outletauto
-Верстка ouletavto.
