@@ -20,6 +20,9 @@ COPY . .
 # Запуск миграций базы данных
 # RUN python manage.py migrate
 
+COPY static /srv/www/outletavto/static
+
+
 # Установка переменных среды
 # ENV DJANGO_SETTINGS_MODULE=myproject.settings.production
 
@@ -29,6 +32,8 @@ EXPOSE 8000
 # Очистка кэша pip
 RUN pip cache purge
 
+# Сборка статических файлов Django
+RUN python manage.py collectstatic --noinput
 
-# Запуск сервера Django
-# CMD gunicorn --bind 0.0.0.0:8000 wsgi:app
+# Запуск Gunicorn
+CMD gunicorn myproject.wsgi:application --bind 0.0.0.0:8000
