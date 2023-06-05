@@ -21,7 +21,7 @@ COPY . .
 # Запуск миграций базы данных
 # RUN python manage.py migrate
 
-COPY static /srv/www/outletavto/static
+# COPY static /srv/www/outletavto/static
 
 
 # Установка переменных среды
