@@ -26,5 +26,5 @@ services:
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - static_volume:/srv/www/outletavto/static/
-volumes:
-  static_volume
+  volumes:
+    static_volume
