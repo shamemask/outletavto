@@ -22,4 +22,3 @@ services:
       - python
     volumes:
       - ./nginx:/etc/nginx/conf.d
-      - ./outletavto/static:/srv/www/outletavto/static
