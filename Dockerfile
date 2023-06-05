@@ -2,7 +2,7 @@
 FROM python:3.9-slim-buster
 
 # Установим зависимости
-RUN apt-get update -y && apt-get install -y libpq-dev nginx
+RUN apt-get update -y && apt-get install -y libpq-dev nginx mc
 
 # Настройка рабочей директории
 WORKDIR /srv/www/outletavto
@@ -27,4 +27,4 @@ EXPOSE 8000
 
 
 # Запуск сервера Django
-# CMD gunicorn --bind 0.0.0.0:5000 wsgi:app
+# CMD gunicorn --bind 0.0.0.0:8000 wsgi:app
