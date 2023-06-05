@@ -7,7 +7,7 @@ services:
     build: .
     command: gunicorn --bind 0.0.0.0:8000 outletavto.wsgi:application
     volumes:
-      - ./myapp/static:/srv/www/outletavto/myapp/static
+      - ./myapp/static:/srv/www/outletavto/static
     expose:
       - 8000
     ports:
@@ -24,4 +24,4 @@ services:
       - python
     volumes:
       - ./nginx:/etc/nginx/conf.d
-      - ./outletavto/myapp/static:/srv/www/outletavto/myapp/static
+      - ./outletavto/static:/srv/www/outletavto/static
