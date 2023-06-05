@@ -6,8 +6,6 @@ services:
     restart: always
     build: .
     command: gunicorn --bind 0.0.0.0:8000 outletavto.wsgi:application
-    volumes:
-      - ./static:/srv/www/outletavto/static
     expose:
       - 8000
     ports:
