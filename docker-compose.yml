@@ -16,7 +16,6 @@ services:
   nginx:
     restart: always
     image: nginx:latest
-    build: ./nginx
     expose:
       - 8080
     ports:
