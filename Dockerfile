@@ -7,6 +7,10 @@ RUN apt-get update -y && apt-get install -y libpq-dev nginx mc
 # Настройка рабочей директории
 WORKDIR /srv/www/outletavto
 
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 # Копирование зависимостей приложения
 COPY requirements.txt .
 
