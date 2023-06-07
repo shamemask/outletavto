@@ -1,7 +1,8 @@
 [submodule "static/outletauto"]
 	path = static/outletauto
-	url = https://github.com/BohdanKabanovProf/outletauto.git
+	url = https://github.com/shamemask/outletauto.git
+	branch = Django
 [submodule "outletauto"]
-	path = outletauto
+	path = static/outletauto
 	url = https://github.com/shamemask/outletauto.git
 	branch = Django
