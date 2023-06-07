@@ -1,0 +1,3 @@
+[submodule "static/outletauto"]
+	path = static/outletauto
+	url = https://github.com/BohdanKabanovProf/outletauto.git

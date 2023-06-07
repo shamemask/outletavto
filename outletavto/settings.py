@@ -60,7 +60,7 @@ ROOT_URLCONF = 'outletavto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR2, 'myapp/templates')],
+        'DIRS': [os.path.join(BASE_DIR2, 'static/outletauto')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,11 +123,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-#     os.path.join(BASE_DIR, "images"),
-# ]
-# print(STATICFILES_DIRS)
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "images"),
+]
+# # print(STATICFILES_DIRS)
 # onlyfiles = [f for f in listdir(os.path.join(BASE_DIR, "static")) if isfile(join(os.path.join(BASE_DIR, "static"), f))]
 # print(onlyfiles)
 STATIC_ROOT = '/srv/www/outletavto/static/'
