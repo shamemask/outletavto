@@ -23,7 +23,7 @@ COPY . .
 # Копирование статических файлов
 COPY static /srv/www/outletavto/static
 
-COPY static/outletauto /srv/www/outletavto/static/outletauto
+COPY index.html /srv/www/outletavto/
 
 # CMD python manage.py collectstatic
 
