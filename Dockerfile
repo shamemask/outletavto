@@ -21,7 +21,7 @@ COPY . .
 # RUN python manage.py migrate
 
 # Копирование статических файлов
-#COPY static /srv/www/outletavto/static
+COPY static /srv/www/outletavto/static
 
 #COPY static/outletauto /srv/www/outletavto/static/outletauto
 
