@@ -5,7 +5,7 @@ FROM python:3.9-slim-buster
 RUN apt-get update -y && apt-get install -y libpq-dev nginx mc
 
 # Настройка рабочей директории
-WORKDIR /srv/www/outletavto
+# WORKDIR /srv/www/outletavto
 
 # Копирование зависимостей приложения
 COPY requirements.txt .
