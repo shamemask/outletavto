@@ -23,7 +23,9 @@ COPY . .
 # Копирование статических файлов
 COPY static /srv/www/outletavto/static
 
-CMD python manage.py collectstatic
+COPY static/outletauto /srv/www/outletavto/static/outletauto
+
+# CMD python manage.py collectstatic
 
 # Открытие порта
 EXPOSE 8000
