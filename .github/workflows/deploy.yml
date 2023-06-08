@@ -1,0 +1,34 @@
+name: Deploy to server
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Deploy codebase to server
+        uses: easingthemes/ssh-deploy@v2.2.3
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.OUTLET_SSH_PRIVATE_KEY }}
+          USER: ${{ secrets.OUTLET_USER }}
+          HOST: ${{ secrets.OUTLET_HOST }}
+          PORT: ${{ secrets.OUTLET_PORT }}
+        with:
+          local: 'C:/projOutlet/outletavto2'
+          remote: './data/outletavto'
+          args: '-av'
+      - name: Open SSH Tunnel
+        uses: easingthemes/ssh-tunnel@v0.2.1
+        with:
+          ssh-key: ${{ secrets.OUTLET_SSH_PRIVATE_KEY }}
+          username: ${{ secrets.OUTLET_USER }}
+          password: ${{ secrets.OUTLET_PASSWORD }}
+          remote-port: '80'
+          local-port: '7890'
+      - run: |
+          cd ../data/outletavto
+          git pull && git submodule update --remote
+          docker-compose down --volumes --remove-orphans
+          docker-compose up --build -d
