@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: outletavto
     steps:
       - name: Deploy codebase to server
         uses: easingthemes/ssh-deploy@v2.2.3
