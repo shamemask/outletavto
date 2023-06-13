@@ -14,7 +14,7 @@ jobs:
 
       - name: Execute shell commands
         run: |
-          cd ../data/outletavto
+          cd ../outletavto
           git pull
           git submodule update --remote
           docker-compose down --volumes --remove-orphans
