@@ -12,9 +12,12 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
+      - name: Set up Docker
+        uses: docker/setup-docker@v1
+
       - name: Execute shell commands
         run: |
-          cd ../outletavto
+          cd ~/data/outletavto
           git pull
           git submodule update --remote
           docker-compose down --volumes --remove-orphans
