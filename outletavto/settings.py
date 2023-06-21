@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'myapp',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +59,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
+SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mail.ru'  # Укажите хост вашего почтового сервера
+EMAIL_PORT = 2525  # Порт сервера
+EMAIL_HOST_USER = 'snab061@bk.ru'  # Укажите вашу почту
+EMAIL_HOST_PASSWORD = 'Abc08031973'  # Укажите пароль от вашей почты
+EMAIL_USE_TLS = True  # Использовать TLS для безопасного соединения
+EMAIL_USE_SSL = False
+DEFAULT_FROM_EMAIL = 'snab061@bk.ru'  # Укажите почту отправителя
 ROOT_URLCONF = 'outletavto.urls'
 TEMPLATES = [
     {
