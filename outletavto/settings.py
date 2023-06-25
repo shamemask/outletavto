@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'sass_processor',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,18 @@ EMAIL_USE_TLS = True  # Использовать TLS для безопасног
 EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = 'snab061@bk.ru'  # Укажите почту отправителя
 ROOT_URLCONF = 'outletavto.urls'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'outletavto',      # Имя базы данных
+        'USER': 'admin',           # Имя пользователя базы данных
+        'PASSWORD': 'yfMhL7PiOB30M9WN',       # Пароль пользователя базы данных
+        'HOST': 'localhost',     # Адрес удаленного сервера базы данных
+        'PORT': '',        # Порт удаленного сервера базы данных
+    }
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -90,13 +103,6 @@ WSGI_APPLICATION = 'outletavto.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 
 # Password validation
