@@ -2,7 +2,7 @@
 FROM python:3.9-slim-buster
 
 # Установим зависимости
-RUN apt-get update -y && apt-get install -y libpq-dev nginx mc
+RUN apt-get update -y && apt-get install -y libpq-dev mysql-client nginx mc
 
 # Настройка рабочей директории
 WORKDIR /srv/www/outletavto
@@ -32,4 +32,3 @@ EXPOSE 8000
 
 # Запуск Gunicorn
 # CMD uvicorn outletavto.asgi:application --config outletavto/myapp/gunicorn_config.py
-
