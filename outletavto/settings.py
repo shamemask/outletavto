@@ -29,8 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-p)ophp_2lp@h27(jlomu&%v64lq=s%$_c6mv(&tzqeu=npim54'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 ALLOWED_HOSTS = ['xn--061-3edaa.xn--p1ai','outletavto-shamemask.b4a.run','127.0.0.1','5.63.155.57','outletavto.ru']
 
@@ -48,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     'sass_processor',
 ]
 
@@ -65,22 +65,34 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru'  # Укажите хост вашего почтового сервера
 EMAIL_PORT = 2525  # Порт сервера
 EMAIL_HOST_USER = 'snab061@bk.ru'  # Укажите вашу почту
-EMAIL_HOST_PASSWORD = 'Abc08031973'  # Укажите пароль от вашей почты
+EMAIL_HOST_PASSWORD = '4iK3EhQbnijKysFDmGyT'  # Укажите пароль от вашей почты
 EMAIL_USE_TLS = True  # Использовать TLS для безопасного соединения
 EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = 'snab061@bk.ru'  # Укажите почту отправителя
 ROOT_URLCONF = 'outletavto.urls'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'outletavto',      # Имя базы данных
-        'USER': 'admin',           # Имя пользователя базы данных
-        'PASSWORD': 'yfMhL7PiOB30M9WN',       # Пароль пользователя базы данных
-        'HOST': 'localhost',     # Адрес удаленного сервера базы данных
-        'PORT': '',        # Порт удаленного сервера базы данных
+if 'DOCKER_CONTAINER' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'outletavto',
+            'USER': 'admin',
+            'PASSWORD': 'yfMhL7PiOB30M9WN',
+            'HOST': 'db',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'outletavto',
+            'USER': 'admin',
+            'PASSWORD': 'yfMhL7PiOB30M9WN',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 TEMPLATES = [
     {
@@ -143,7 +155,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 print(str(BASE_DIR) == 'C:\projOutlet\outletavto2')
 if str(BASE_DIR) == 'C:\projOutlet\outletavto2':
-
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = True
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, "static"),
         os.path.join(BASE_DIR, "images"),
@@ -151,8 +164,9 @@ if str(BASE_DIR) == 'C:\projOutlet\outletavto2':
 
 # onlyfiles = [f for f in listdir(os.path.join(BASE_DIR, "static")) if isfile(join(os.path.join(BASE_DIR, "static"), f))]
 # print(onlyfiles)
-
-STATIC_ROOT = '/srv/www/outletavto/static/'
+else:
+    STATIC_ROOT = '/srv/www/outletavto/static/'
+    DEBUG = False
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

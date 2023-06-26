@@ -31,4 +31,5 @@ COPY static /srv/www/outletavto/static
 EXPOSE 8000
 
 # Запуск Gunicorn
-# CMD gunicorn outletavto.wsgi:application --bind 0.0.0.0:8000
+# CMD uvicorn outletavto.asgi:application --config outletavto/myapp/gunicorn_config.py
+
