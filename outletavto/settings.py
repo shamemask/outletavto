@@ -71,14 +71,14 @@ EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = 'snab061@bk.ru'  # Укажите почту отправителя
 ROOT_URLCONF = 'outletavto.urls'
 
-if 'DOCKER_CONTAINER' in os.environ:
+if str(BASE_DIR) == 'C:\projOutlet\outletavto2':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'outletavto',
             'USER': 'admin',
             'PASSWORD': 'yfMhL7PiOB30M9WN',
-            'HOST': 'db',
+            'HOST': 'localhost',
             'PORT': '5432',
         }
     }
@@ -89,7 +89,7 @@ else:
             'NAME': 'outletavto',
             'USER': 'admin',
             'PASSWORD': 'yfMhL7PiOB30M9WN',
-            'HOST': 'localhost',
+            'HOST': 'db',
             'PORT': '5432',
         }
     }
