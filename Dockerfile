@@ -2,7 +2,7 @@
 FROM python:3.9-slim-buster
 
 # Установим зависимости
-RUN apt-get update -y && apt-get install -y build-essential libssl1.1 libssl1.1=1.1.1f-1ubuntu2 libssl-dev libpq-dev libmysqlclient-dev default-mysql-client nginx mc
+RUN apt-get update -y && apt-get install -y libpq-dev nginx mc
 
 # Настройка рабочей директории
 WORKDIR /srv/www/outletavto
