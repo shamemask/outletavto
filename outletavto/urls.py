@@ -24,8 +24,9 @@ from myapp.views import profile_view
 urlpatterns = [
     path('accounts/signup/', SignupView.as_view(), name='account_signup'),
     path('accounts/login/', LoginView.as_view(), name='account_login'),
-    path('accounts/profile/', profile_view, name='profile'),
+    path('accounts/profile/', profile_view, name='account_profile'),
     path('account/dashboard/', UserDetailView.as_view(), name='account_dashboard'),
+    path('accounts/', include('allauth.urls')),
     path('', include('myapp.urls')),
     path('admin/', admin.site.urls),
     

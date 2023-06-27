@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google', # for Google OAuth 2.0
     'sass_processor',
 ]
 
@@ -60,7 +61,51 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '221643686649-653ssl4p5eba6hfimrv1lgmul2otq593.apps.googleusercontent.com',
+            'secret': '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',
+            'key': '',
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    },
+    'yandex': {
+        'APP': {
+            'client_id': 'your-yandex-client-id',
+            'secret': 'your-yandex-client-secret',
+            'key': '',
+        },
+        'SCOPE': [
+            'login:email',
+            'login:info',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
 SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
+# Additional configuration settings
+SOCIALACCOUNT_QUERY_EMAIL = True
+ACCOUNT_LOGOUT_ON_GET= True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru'  # Укажите хост вашего почтового сервера
 EMAIL_PORT = 2525  # Порт сервера
