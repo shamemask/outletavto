@@ -213,7 +213,7 @@ if str(BASE_DIR) == 'C:\projOutlet\outletavto2':
 # print(onlyfiles)
 else:
     STATIC_ROOT = '/srv/www/outletavto/static/'
-    DEBUG = False
+    DEBUG = True
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
