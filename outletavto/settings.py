@@ -202,10 +202,7 @@ print(str(BASE_DIR) == 'C:\projOutlet\outletavto2')
 if str(BASE_DIR) == 'C:\projOutlet\outletavto2':
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static"),
-        os.path.join(BASE_DIR, "images"),
-    ]
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # onlyfiles = [f for f in listdir(os.path.join(BASE_DIR, "static")) if isfile(join(os.path.join(BASE_DIR, "static"), f))]
 # print(onlyfiles)
