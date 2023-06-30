@@ -98,6 +98,8 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+CSRF_COOKIE_SECURE = False
+
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 
@@ -202,7 +204,10 @@ print(str(BASE_DIR) == 'C:\projOutlet\outletavto2')
 if str(BASE_DIR) == 'C:\projOutlet\outletavto2':
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static"),
+        os.path.join(BASE_DIR, "images"),
+    ]
 
 # onlyfiles = [f for f in listdir(os.path.join(BASE_DIR, "static")) if isfile(join(os.path.join(BASE_DIR, "static"), f))]
 # print(onlyfiles)
