@@ -67,7 +67,10 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
-        }
+        },
+        'METHOD': 'oauth2',
+        'VERIFIED_EMAIL': False,
+        'redirect_uri': 'https://outletavto.ru/accounts/google/login/callback/',
     },
     'yandex': {
         'APP': {
