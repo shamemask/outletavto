@@ -36,7 +36,7 @@ ALLOWED_HOSTS = ['xn--061-3edaa.xn--p1ai','outletavto-shamemask.b4a.run','127.0.
 
 # Application definition
 
-SITE_ID = 2
+SITE_ID = 1
 
 INSTALLED_APPS = [
     'django.contrib.admin',
