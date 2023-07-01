@@ -27,6 +27,7 @@ urlpatterns = [
     path('accounts/profile/', profile_view, name='account_profile'),
     path('account/dashboard/', UserDetailView.as_view(), name='account_dashboard'),
     path('accounts/', include('allauth.urls')),
+    path('accounts/google/', include('allauth.urls')),
     path('', include('myapp.urls')),
     path('admin/', admin.site.urls),
     
