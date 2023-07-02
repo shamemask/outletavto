@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google', # for Google OAuth 2.0
+    'allauth.socialaccount.providers.yandex', # for Google OAuth 2.0
     'sass_processor',
 ]
 
@@ -75,8 +76,8 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     'yandex': {
         'APP': {
-            'client_id': 'your-yandex-client-id',
-            'secret': 'your-yandex-client-secret',
+            'client_id': '283a6c65cf16441fb933008bd35d7578',
+            'secret': '0ec227ee8476445daaae9f4fc5db8425',
             'key': '',
         },
         'SCOPE': [
