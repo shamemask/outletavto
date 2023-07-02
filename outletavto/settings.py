@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'sass_processor',
 ]
 
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
