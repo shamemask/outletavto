@@ -17,7 +17,11 @@ def index(request):
     news = get_news("https://dvizhok.su/dvizhok-rss.rss")
     signup_form = SignupForm()
     login_form = LoginForm()
-    return render(request, 'index.html', {'signup_form': signup_form, 'login_form':login_form, 'news': news})
+    form = RegistrationForm()
+    return render(request, 'index.html', { 'form': form,
+                                           'signup_form': signup_form,
+                                           'login_form':login_form,
+                                           'news': news})
 
 def image_detail(request, image_name):
     image_names = os.listdir('./images')
