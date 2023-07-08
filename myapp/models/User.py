@@ -26,6 +26,7 @@ class User(AbstractUser):
     promo_code = models.CharField(max_length=255)
     terms_of_service = models.BooleanField()
     city = models.CharField(max_length=255)
+    shop_name2 = models.CharField(max_length=255)
     form = models.CharField(max_length=255)
     organization_name = models.CharField(max_length=255)
     legal_address = models.CharField(max_length=255)

@@ -1,8 +1,7 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
 
-from myapp.models import User
+from myapp.models.User import User
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
