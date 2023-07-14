@@ -18,15 +18,15 @@ from django.contrib import admin
 from django.urls import include, path
 from allauth.account.views import SignupView, LoginView
 
-from myapp.profile.UserDetailView import UserDetailView
-from myapp.views import profile_view
+from myapp.profile.UserDetailView import FizUserDetailView
+from myapp.views.profile_view import profile_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/signup/', SignupView.as_view(), name='account_signup'),
     path('accounts/login/', LoginView.as_view(), name='account_login'),
     path('accounts/profile/', profile_view, name='account_profile'),
-    path('account/dashboard/', UserDetailView.as_view(), name='account_dashboard'),
+    path('account/dashboard/', FizUserDetailView.as_view(), name='account_dashboard'),
     path('accounts/', include('allauth.urls')),
     path('', include('myapp.urls')),
 

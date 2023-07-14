@@ -1,10 +1,14 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
 
-from myapp.models.User import User
+from myapp.UserModel import FizUser, UrUser
 
 
-class UserDetailView(LoginRequiredMixin, DetailView):
-    model = User
+class FizUserDetailView(LoginRequiredMixin, DetailView):
+    model = FizUser
+    template_name = 'account/dashboard.html'
+    context_object_name = 'user'
+class UrUserDetailView(LoginRequiredMixin, DetailView):
+    model = UrUser
     template_name = 'account/dashboard.html'
     context_object_name = 'user'

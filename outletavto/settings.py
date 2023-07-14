@@ -38,6 +38,19 @@ ALLOWED_HOSTS = ['xn--061-3edaa.xn--p1ai','outletavto-shamemask.b4a.run','127.0.
 
 SITE_ID = 1
 
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTHENTICATION_BACKENDS = [
+    'myapp.backends.FizUserBackend',
+    'myapp.backends.UrUserBackend',
+    'django.contrib.auth.backends.ModelBackend',
+    # 'allauth.account.auth_backends.AuthenticationBackend',
+]
+ACCOUNT_FORMS = {
+    'signup': 'myapp.forms.RegistrationForm',
+}
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -47,6 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
+    'myapp.models2',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -56,6 +70,7 @@ INSTALLED_APPS = [
     'sass_processor',
 ]
 
+# AUTH_USER_MODEL = 'myapp.FizUser'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -121,7 +136,7 @@ EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = 'snab061@bk.ru'  # Укажите почту отправителя
 ROOT_URLCONF = 'outletavto.urls'
 
-if str(BASE_DIR) == 'C:\projOutlet\outletavto2':
+if str(BASE_DIR) == 'C:\projOutlet\outletavto':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
@@ -203,8 +218,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-print(str(BASE_DIR) == 'C:\projOutlet\outletavto2')
-if str(BASE_DIR) == 'C:\projOutlet\outletavto2':
+print(str(BASE_DIR) == 'C:\projOutlet\outletavto')
+if str(BASE_DIR) == 'C:\projOutlet\outletavto':
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
     STATICFILES_DIRS = [
@@ -220,12 +235,3 @@ else:
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
-
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
