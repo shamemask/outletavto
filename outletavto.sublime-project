@@ -1,0 +1,23 @@
+{
+    "folders":
+    [
+        {
+            "path": "${project_path}"
+        }
+    ],
+    "settings":
+    {
+        "SublimeREPL":
+        {
+            "default_extend_env":
+            {
+                "PYTHONPATH": "${project_path}/venv"
+            }
+        },
+        "SublimeDjaneiro":
+        {
+            "python_interpreter": "python",
+            "manage_py": "${project_path}/manage.py"
+        }
+    }
+}
