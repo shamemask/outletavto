@@ -1,8 +1,8 @@
-[submodule "static/outletauto"]
-	path = static/outletauto
-	url = https://github.com/shamemask/outletauto.git
-	branch = Django
 [submodule "outletauto"]
 	path = static/outletauto
 	url = https://github.com/shamemask/outletauto.git
 	branch = Django
+[submodule "authentication"]
+	path = authentication
+	url = https://github.com/shamemask/dj-ms-authentication.git
+	branch = auth

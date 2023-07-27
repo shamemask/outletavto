@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.detail import DetailView
 
-from myapp.UserModel import FizUser, UrUser
+from authentication.UserModel import FizUser, UrUser
 
 
 class FizUserDetailView(LoginRequiredMixin, DetailView):

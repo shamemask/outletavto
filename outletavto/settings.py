@@ -41,13 +41,13 @@ SITE_ID = 1
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = [
-    'myapp.backends.FizUserBackend',
-    'myapp.backends.UrUserBackend',
+    'authentication.backends.FizUserBackend',
+    'authentication.backends.UrUserBackend',
     'django.contrib.auth.backends.ModelBackend',
     # 'allauth.account.auth_backends.AuthenticationBackend',
 ]
 ACCOUNT_FORMS = {
-    'signup': 'myapp.forms.RegistrationForm',
+    'signup': 'authentication.forms.RegistrationForm',
 }
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -60,7 +60,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp',
-    'myapp.models2',
+    'authentication',
+    'authentication.models2',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -70,7 +71,6 @@ INSTALLED_APPS = [
     'sass_processor',
 ]
 
-# AUTH_USER_MODEL = 'myapp.FizUser'
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
