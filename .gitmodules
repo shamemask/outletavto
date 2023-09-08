@@ -6,3 +6,6 @@
 	path = authentication
 	url = https://github.com/shamemask/dj-ms-authentication.git
 	branch = auth
+[submodule "main_api"]
+	path = main_api
+	url = https://github.com/shamemask/outletavto_api_django.git

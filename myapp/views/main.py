@@ -16,9 +16,8 @@ def index(request):
     templ_dict['news'] = get_news("https://dvizhok.su/dvizhok-rss.rss")
     templ_dict['message'] = 'Запчасти в интернет-магазине'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, 'index.html', templ_dict)
-
-
 
 
 
