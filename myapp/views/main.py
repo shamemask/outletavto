@@ -17,7 +17,17 @@ def index(request):
     templ_dict['message'] = 'Запчасти в интернет-магазине'
     path = os.getcwd() + '/static/outletauto/pages'
     files = os.listdir(path)
-    templ_dict['files'] = [file.replace('.html','') for file in files]
+    files_list = [file.replace('.html','') for file in files if file != 'favicon.ico']
+    files_dict = {}
+    count = '0'
+    i = 0
+    for file in files_list:
+        i += 1
+        if i == 1 or i % 10 == 0:
+            count = f'{i // 10}1-{1 + (i // 10)}0'
+            files_dict[count] = []
+        files_dict[count].append(file)
+    templ_dict['files_dict'] = files_dict
     templ_dict.update(auth(request))
 
     request.session.save()
@@ -25,7 +35,7 @@ def index(request):
 
 @csrf_exempt
 def html(request,html):
-    return render(request, f'pages\\{html}.html', {})
+    return render(request, os.path.join('pages',html+'.html'), {})
 
 
 
