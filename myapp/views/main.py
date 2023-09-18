@@ -217,6 +217,7 @@ def universal_catalog_page(request):
     templ_dict['page_title'] = 'Персональный каталог'
     templ_dict['page_class'] = 'universal-catalog'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','universal-catalog_page.html'), templ_dict)
 @csrf_exempt
 def universal_catalog_tire_page(request):
