@@ -13,7 +13,7 @@ from django.shortcuts import render
 @csrf_exempt
 def index(request):
     templ_dict = {}
-    templ_dict['news'] = get_news("https://dvizhok.su/dvizhok-rss.rss")
+
     templ_dict['message'] = 'Запчасти в интернет-магазине'
     path = os.getcwd() + '/static/outletauto/pages'
     files = os.listdir(path)
@@ -55,6 +55,7 @@ def news_page(request):
     templ_dict['page_title'] = 'Оплата заказа'
     templ_dict['page_class'] = 'news'
     templ_dict.update(auth(request))
+    templ_dict['news'] = get_news("https://dvizhok.su/dvizhok-rss.rss")
     return render(request, os.path.join('outletauto_page','news_page.html'), templ_dict)
 
 

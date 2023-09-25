@@ -43,7 +43,7 @@ urlpatterns = [
     path('universal_catalog_tire_2', universal_catalog_tire_2_page, name='universal_catalog_tire_2_page'),
     path('universal_catalog_tire_3', universal_catalog_tire_3_page, name='universal_catalog_tire_3_page'),
     path('universal_catalog_card', universal_catalog_card_page, name='universal_catalog_card_page'),
-    path('<str:html>', html, name='html'),
+    # path('<str:html>', html, name='html'),
     # path('accounts/', include('allauth.urls')),
     path('logout', logout, name='logout'),
     path('confirm/', confirm_email, name='confirm_email'),
