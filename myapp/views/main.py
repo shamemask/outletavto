@@ -141,7 +141,7 @@ def news_page_page(request):
     templ_dict = {}
     templ_dict['page_title'] = 'Персональный каталог'
     templ_dict['page_class'] = 'news_page'
-    return render(request, os.path.join('outletauto_page','news_page_page.html'), templ_dict)
+    return render(request, os.path.join('outletauto_page','news-page_page.html'), templ_dict)
 @csrf_exempt
 def orders_page(request):
     templ_dict = {}
