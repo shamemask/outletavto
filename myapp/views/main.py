@@ -7,7 +7,6 @@ import os
 from django.shortcuts import render
 
 
-
 # @sync_to_async
 # @login_required
 @csrf_exempt
@@ -39,6 +38,7 @@ def catalog_page(request):
     templ_dict['page_title'] = 'Каталог'
     templ_dict['page_class'] = 'catalog'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','catalog_page.html'), templ_dict)
 
 @csrf_exempt
@@ -47,6 +47,7 @@ def payment_page(request):
     templ_dict['page_title'] = 'Оплата заказа'
     templ_dict['page_class'] = 'payment'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','payment_page.html'), templ_dict)
 
 @csrf_exempt
@@ -55,6 +56,7 @@ def news_page(request):
     templ_dict['page_title'] = 'Оплата заказа'
     templ_dict['page_class'] = 'news'
     templ_dict.update(auth(request))
+    request.session.save()
     templ_dict['news'] = get_news("https://dvizhok.su/dvizhok-rss.rss")
     return render(request, os.path.join('outletauto_page','news_page.html'), templ_dict)
 
@@ -65,6 +67,7 @@ def add_auto_page(request):
     templ_dict['page_title'] = 'Баланс'
     templ_dict['page_class'] = 'add-auto'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','add-auto_page.html'), templ_dict)
 @csrf_exempt
 def authorization_page(request):
@@ -72,6 +75,7 @@ def authorization_page(request):
     templ_dict['page_title'] = 'Авторизация'
     templ_dict['page_class'] = 'authorization'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','authorization_page.html'), templ_dict)
 @csrf_exempt
 def balance_page(request):
@@ -79,6 +83,7 @@ def balance_page(request):
     templ_dict['page_title'] = 'Баланс'
     templ_dict['page_class'] = 'balance'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','balance_page.html'), templ_dict)
 @csrf_exempt
 def basket_page(request):
@@ -86,6 +91,7 @@ def basket_page(request):
     templ_dict['page_title'] = 'Корзина'
     templ_dict['page_class'] = 'basket'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','basket_page.html'), templ_dict)
 @csrf_exempt
 def call_to_vin_page(request):
@@ -93,6 +99,7 @@ def call_to_vin_page(request):
     templ_dict['page_title'] = 'Vin'
     templ_dict['page_class'] = 'call-to-vin'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','call-to-vin_page.html'), templ_dict)
 @csrf_exempt
 def catalog_personal_account_page(request):
@@ -100,6 +107,7 @@ def catalog_personal_account_page(request):
     templ_dict['page_title'] = 'Персональный каталог'
     templ_dict['page_class'] = 'catalog-personal-account'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','catalog-personal-account_page.html'), templ_dict)
 @csrf_exempt
 def club_page(request):
@@ -107,6 +115,7 @@ def club_page(request):
     templ_dict['page_title'] = 'Персональный каталог'
     templ_dict['page_class'] = 'club'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','club_page.html'), templ_dict)
 @csrf_exempt
 def company_page(request):
@@ -114,6 +123,7 @@ def company_page(request):
     templ_dict['page_title'] = 'Персональный каталог'
     templ_dict['page_class'] = 'company'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','company_page.html'), templ_dict)
 @csrf_exempt
 def favorite_page(request):
@@ -121,6 +131,7 @@ def favorite_page(request):
     templ_dict['page_title'] = 'Персональный каталог'
     templ_dict['page_class'] = 'favorite'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','favorite_page.html'), templ_dict)
 @csrf_exempt
 def garage_page(request):
@@ -128,6 +139,7 @@ def garage_page(request):
     templ_dict['page_title'] = 'Персональный каталог'
     templ_dict['page_class'] = 'garage'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','garage_page.html'), templ_dict)
 @csrf_exempt
 def modification_page(request):
@@ -135,12 +147,14 @@ def modification_page(request):
     templ_dict['page_title'] = 'Персональный каталог'
     templ_dict['page_class'] = 'modification'
     templ_dict.update(auth(request))
+    request.session.save()
     return render(request, os.path.join('outletauto_page','modification_page.html'), templ_dict)
 @csrf_exempt
 def news_page_page(request):
     templ_dict = {}
     templ_dict['page_title'] = 'Персональный каталог'
     templ_dict['page_class'] = 'news_page'
+    templ_dict.update(auth(request))
     return render(request, os.path.join('outletauto_page','news-page_page.html'), templ_dict)
 @csrf_exempt
 def orders_page(request):
