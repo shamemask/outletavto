@@ -1,7 +1,7 @@
 import os
 
 from authentication.views.main import auth
-from myapp.main_logic.news_parser import get_news
+from myapp.main_logic.news_parser import get_news,get_new
 from django.views.decorators.csrf import csrf_exempt
 import os
 from django.shortcuts import render
@@ -150,11 +150,15 @@ def modification_page(request):
     request.session.save()
     return render(request, os.path.join('outletauto_page','modification_page.html'), templ_dict)
 @csrf_exempt
-def news_page_page(request):
+def news_page_page(request, index):
     templ_dict = {}
     templ_dict['page_title'] = 'Персональный каталог'
-    templ_dict['page_class'] = 'news_page'
+    templ_dict['page_class'] = 'news-page'
     templ_dict.update(auth(request))
+    news = get_news("https://dvizhok.su/dvizhok-rss.rss")
+    templ_dict['news'] = news
+    # news = get_news_autoparts("https://autoparts.webnode.page/rss/stati.xml")
+    templ_dict['new'] = get_new(news[int(index)+1]['link'])
     return render(request, os.path.join('outletauto_page','news-page_page.html'), templ_dict)
 @csrf_exempt
 def orders_page(request):
