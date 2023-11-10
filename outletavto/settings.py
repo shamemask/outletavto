@@ -32,11 +32,11 @@ SECRET_KEY = 'django-insecure-p)ophp_2lp@h27(jlomu&%v64lq=s%$_c6mv(&tzqeu=npim54
 
 
 ALLOWED_HOSTS = [
-    '5-63-155-57.cloudvps.regruhosting.ru',
+    '31-31-202-90.cloudvps.regruhosting.ru',
     '[2a00:f940:2:4:2::4645]',
     'xn--061-3edaa.xn--p1ai',
     'outletavto-shamemask.b4a.run',
-    '127.0.0.1','5.63.155.57',
+    '127.0.0.1','31.31.202.90',
     'outletavto.ru',
     'localhost'
 ]
