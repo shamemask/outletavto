@@ -23,11 +23,11 @@ from myapp.views.profile_view import profile_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/signup/', SignupView.as_view(), name='account_signup'),
-    path('accounts/login/', LoginView.as_view(), name='account_login'),
-    path('accounts/profile/', profile_view, name='account_profile'),
+    # path('accounts/signup/', SignupView.as_view(), name='account_signup'),
+    # path('accounts/login/', LoginView.as_view(), name='account_login'),
+    # path('accounts/profile/', profile_view, name='account_profile'),
     path('account/dashboard/', FizUserDetailView.as_view(), name='account_dashboard'),
-    path('accounts/', include('allauth.urls')),
+    # path('accounts/', include('allauth.urls')),
     path('', include('myapp.urls')),
     # path('api/', include('main_api.urls')),
 

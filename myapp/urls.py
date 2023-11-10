@@ -12,6 +12,7 @@ from .views.main import index, html, catalog_page, payment_page, news_page, univ
     authorization_page, add_auto_page
 
 urlpatterns = [
+    path('logout', logout, name='logout'),
     path('', index, name='index'),
     path('catalog', catalog_page, name='catalog_page'),
     path('payment', payment_page, name='payment_page'),
@@ -45,9 +46,11 @@ urlpatterns = [
     path('universal_catalog_tire_3', universal_catalog_tire_3_page, name='universal_catalog_tire_3_page'),
     path('universal_catalog_card', universal_catalog_card_page, name='universal_catalog_card_page'),
     # path('<str:html>', html, name='html'),
-    path('accounts/', include('allauth.urls')),
-    path('logout', logout, name='logout'),
+
     path('confirm/', confirm_email, name='confirm_email'),
+    path('accounts/', include('allauth.urls')),
+
+
 
                   # path('<str:image_name>/', views.image_detail, name='image_detail'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
