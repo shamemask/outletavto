@@ -1,5 +1,5 @@
 # Определение базового образа
-FROM python:3.9-slim-buster
+FROM python:3.11-slim-buster
 
 # Установим зависимости
 RUN apt-get update -y && apt-get install -y libpq-dev nginx mc
