@@ -16,7 +16,7 @@ jobs:
         run: |
           cd /data/outletavto
           git pull
-          git submodule update --remote
+          git submodule update --init -f
           docker image prune --force
           docker system prune --all --volumes
           docker-compose down --volumes --remove-orphans
