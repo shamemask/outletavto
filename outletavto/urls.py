@@ -29,7 +29,7 @@ urlpatterns = [
     path('account/dashboard/', FizUserDetailView.as_view(), name='account_dashboard'),
     # path('accounts/', include('allauth.urls')),
     path('', include('myapp.urls')),
-    # path('api/', include('main_api.urls')),
+    path('api/', include('main_api.urls')),
 
     
 ]

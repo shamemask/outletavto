@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 
 from authentication.views.email import send_confirmation_email, confirm_email
 from authentication.views.logout import logout
+from main_api.views import AsyncCatalog
 from .views.main import index, html, catalog_page, payment_page, news_page, universal_catalog_card_page, \
     universal_catalog_tire_3_page, universal_catalog_tire_2_page, universal_catalog_tire_page, universal_catalog_page, \
     testfilter_page, testcalendar_page, self_call_page, registration_page, recovery_page, promotion_page, profile_page, \
@@ -15,6 +16,7 @@ urlpatterns = [
     path('logout', logout, name='logout'),
     path('', index, name='index'),
     path('catalog', catalog_page, name='catalog_page'),
+    path('catalog2', AsyncCatalog.as_view(), name='catalog_api'),
     path('payment', payment_page, name='payment_page'),
     path('news', news_page, name='news_page'),
     path('add_auto', add_auto_page, name='add_auto_page'),
