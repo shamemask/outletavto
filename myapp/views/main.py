@@ -12,7 +12,7 @@ from django.shortcuts import render
 @csrf_exempt
 def index(request):
     templ_dict = {}
-
+    templ_dict['page_title'] = 'OutletAvto'
     templ_dict['message'] = 'Запчасти в интернет-магазине'
     path = os.getcwd() + '/static/outletauto/pages'
     files = os.listdir(path)
@@ -53,7 +53,7 @@ def payment_page(request):
 @csrf_exempt
 def news_page(request):
     templ_dict = {}
-    templ_dict['page_title'] = 'Оплата заказа'
+    templ_dict['page_title'] = 'Новости'
     templ_dict['page_class'] = 'news'
     templ_dict.update(auth(request))
     request.session.save()
@@ -96,7 +96,7 @@ def basket_page(request):
 @csrf_exempt
 def call_to_vin_page(request):
     templ_dict = {}
-    templ_dict['page_title'] = 'Vin'
+    templ_dict['page_title'] = 'Движение заказов'
     templ_dict['page_class'] = 'call-to-vin'
     templ_dict.update(auth(request))
     request.session.save()
@@ -112,7 +112,7 @@ def catalog_personal_account_page(request):
 @csrf_exempt
 def club_page(request):
     templ_dict = {}
-    templ_dict['page_title'] = 'Персональный каталог'
+    templ_dict['page_title'] = 'Клуб'
     templ_dict['page_class'] = 'club'
     templ_dict.update(auth(request))
     request.session.save()
@@ -120,7 +120,7 @@ def club_page(request):
 @csrf_exempt
 def company_page(request):
     templ_dict = {}
-    templ_dict['page_title'] = 'Персональный каталог'
+    templ_dict['page_title'] = 'Компания'
     templ_dict['page_class'] = 'company'
     templ_dict.update(auth(request))
     request.session.save()
@@ -128,7 +128,7 @@ def company_page(request):
 @csrf_exempt
 def favorite_page(request):
     templ_dict = {}
-    templ_dict['page_title'] = 'Персональный каталог'
+    templ_dict['page_title'] = 'Избранное'
     templ_dict['page_class'] = 'favorite'
     templ_dict.update(auth(request))
     request.session.save()
@@ -136,7 +136,7 @@ def favorite_page(request):
 @csrf_exempt
 def garage_page(request):
     templ_dict = {}
-    templ_dict['page_title'] = 'Персональный каталог'
+    templ_dict['page_title'] = 'Гараж'
     templ_dict['page_class'] = 'garage'
     templ_dict.update(auth(request))
     request.session.save()
@@ -152,39 +152,40 @@ def modification_page(request):
 @csrf_exempt
 def news_page_page(request, index):
     templ_dict = {}
-    templ_dict['page_title'] = 'Персональный каталог'
+
     templ_dict['page_class'] = 'news-page'
     templ_dict.update(auth(request))
     news = get_news("https://dvizhok.su/dvizhok-rss.rss")
     templ_dict['news'] = news
     # news = get_news_autoparts("https://autoparts.webnode.page/rss/stati.xml")
-    templ_dict['new'] = get_new(news[int(index)+1]['link'])
+    templ_dict['new'] = get_new(news[int(index)-1]['link'])
+    templ_dict['page_title'] = templ_dict['new']['title']
     return render(request, os.path.join('outletauto_page','news-page_page.html'), templ_dict)
 @csrf_exempt
 def orders_page(request):
     templ_dict = {}
-    templ_dict['page_title'] = 'Персональный каталог'
+    templ_dict['page_title'] = 'Заказы'
     templ_dict['page_class'] = 'orders'
     templ_dict.update(auth(request))
     return render(request, os.path.join('outletauto_page','orders_page.html'), templ_dict)
 @csrf_exempt
 def passenger_car_page(request):
     templ_dict = {}
-    templ_dict['page_title'] = 'Персональный каталог'
+    templ_dict['page_title'] = 'Поиск автомобиля'
     templ_dict['page_class'] = 'passenger-car'
     templ_dict.update(auth(request))
     return render(request, os.path.join('outletauto_page','passenger-car_page.html'), templ_dict)
 @csrf_exempt
 def passenger_car_info_page(request):
     templ_dict = {}
-    templ_dict['page_title'] = 'Персональный каталог'
+    templ_dict['page_title'] = 'Подбор запчастей по параметрам'
     templ_dict['page_class'] = 'passenger-car-info'
     templ_dict.update(auth(request))
     return render(request, os.path.join('outletauto_page','passenger-car-info_page.html'), templ_dict)
 @csrf_exempt
 def profile_page(request):
     templ_dict = {}
-    templ_dict['page_title'] = 'Персональный каталог'
+    templ_dict['page_title'] = 'Профиль'
     templ_dict['page_class'] = 'profile'
     templ_dict.update(auth(request))
     return render(request, os.path.join('outletauto_page','profile_page.html'), templ_dict)
