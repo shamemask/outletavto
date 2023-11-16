@@ -14,21 +14,42 @@ def index(request):
     templ_dict = {}
     templ_dict['page_title'] = 'OutletAvto'
     templ_dict['message'] = 'Запчасти в интернет-магазине'
-    path = os.getcwd() + '/static/outletauto/pages'
-    files = os.listdir(path)
-    files_list = [file.replace('.html','') for file in files if file != 'favicon.ico']
-    files_dict = {}
-    count = '0'
-    i = 0
-    for file in files_list:
-        i += 1
-        if i == 1 or i % 10 == 0:
-            count = f'{i // 10}1-{1 + (i // 10)}0'
-            files_dict[count] = []
-        files_dict[count].append(file)
-    templ_dict['files_dict2'] = files_dict
+    # path = os.getcwd() + '/static/outletauto/pages'
+    # files = os.listdir(path)
+    # files_list = [file.replace('.html','') for file in files if file != 'favicon.ico']
+    # files_dict = {}
+    # count = '0'
+    # i = 0
+    # for file in files_list:
+    #     i += 1
+    #     if i == 1 or i % 10 == 0:
+    #         count = f'{i // 10}1-{1 + (i // 10)}0'
+    #         files_dict[count] = []
+    #     files_dict[count].append(file)
+    # templ_dict['files_dict2'] = files_dict
     templ_dict.update(auth(request))
-
+    templ_dict['catalogue'] = [
+        'Оригинальные запчасти',
+        'Запчасти для ТО',
+        'Каталоги TecDoc',
+        'Шины и диски',
+        'Масла и тех.жидкости',
+        'Доб. оборудование',
+        'Инструмент',
+        'Автохимия и косметика',
+        'Щетки, лампы, аксессуары',
+    ]
+    templ_dict['popular'] = [
+        'Свет и электрика',
+        'Электроинструменты',
+        'Садовая техника',
+        'Ручные инструменты',
+        'Бытовая химия',
+        'Канцтовары',
+        'Детские товары',
+        'Велосипеды',
+        'Туризм, рыбалка',
+    ]
     request.session.save()
     return render(request, 'index.html', templ_dict)
 
