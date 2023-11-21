@@ -235,7 +235,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-print(str(BASE_DIR) == 'C:\projOutlet\outletavto')
 if str(BASE_DIR) == 'C:\projOutlet\outletavto':
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
@@ -244,8 +243,6 @@ if str(BASE_DIR) == 'C:\projOutlet\outletavto':
         os.path.join(BASE_DIR, "images"),
     ]
 
-# onlyfiles = [f for f in listdir(os.path.join(BASE_DIR, "static")) if isfile(join(os.path.join(BASE_DIR, "static"), f))]
-# print(onlyfiles)
 else:
     STATIC_ROOT = '/srv/www/outletavto/static/'
     DEBUG = True
