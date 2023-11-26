@@ -23,7 +23,6 @@ from django.db import models
 #         return self.create_user(email, **extra_fields)
 # class FizUser(AbstractBaseUser):
 #     email = models.EmailField(unique=True)
-#     shop_name = models.CharField(max_length=255)
 #     full_name = models.CharField(max_length=255)
 #     phone = models.CharField(max_length=20)
 #     promo_code = models.CharField(max_length=255, blank=True)
@@ -40,7 +39,6 @@ from django.db import models
 # class UrUser(AbstractBaseUser):
 #     email = models.EmailField(unique=True)
 #     form = models.CharField(max_length=255)
-#     shop_name = models.CharField(max_length=255)
 #     phone = models.CharField(max_length=20)
 #     full_name = models.CharField(max_length=255)
 #     password = models.CharField(max_length=255)  # Здесь предполагается хранение хэшированного пароля
