@@ -42,7 +42,7 @@ def index(request):
         'Велосипеды',
         'Туризм, рыбалка',
     ]
-    if not templ_dict['fizform'].is_valid() or not templ_dict['urform'].is_valid():
+    if templ_dict['fizform'].errors or templ_dict['urform'].errors:
         template = os.path.join('outletauto_page','registration_page.html')
     request.session.save()
     return render(request, template, templ_dict)
