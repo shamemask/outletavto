@@ -1,5 +1,8 @@
 import os
 
+from drf_yasg import openapi
+from drf_yasg.utils import swagger_auto_schema
+
 from authentication.UserModel import FizUser
 from authentication.views.main import auth
 from myapp.main_logic.news_parser import get_news,get_new
@@ -15,19 +18,6 @@ def index(request):
     templ_dict = {}
     templ_dict['page_title'] = 'OutletAvto'
     templ_dict['message'] = 'Запчасти в интернет-магазине'
-    # path = os.getcwd() + '/static/outletauto/pages'
-    # files = os.listdir(path)
-    # files_list = [file.replace('.html','') for file in files if file != 'favicon.ico']
-    # files_dict = {}
-    # count = '0'
-    # i = 0
-    # for file in files_list:
-    #     i += 1
-    #     if i == 1 or i % 10 == 0:
-    #         count = f'{i // 10}1-{1 + (i // 10)}0'
-    #         files_dict[count] = []
-    #     files_dict[count].append(file)
-    # templ_dict['files_dict2'] = files_dict
     templ_dict.update(auth(request))
     templ_dict['catalogue'] = [
         'Оригинальные запчасти',

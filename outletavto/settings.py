@@ -78,6 +78,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google', # for Google OAuth 2.0
     'allauth.socialaccount.providers.yandex', # for Google OAuth 2.0
     'sass_processor',
+    'drf_yasg',
 ]
 
 

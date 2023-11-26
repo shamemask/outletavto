@@ -1,6 +1,9 @@
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
 
 from authentication.views.email import send_confirmation_email, confirm_email
 from authentication.views.logout import logout
@@ -11,6 +14,19 @@ from .views.main import index, html, catalog_page, payment_page, news_page, univ
     passenger_car_info_page, passenger_car_page, orders_page, news_page_page, modification_page, garage_page, \
     favorite_page, company_page, club_page, catalog_personal_account_page, call_to_vin_page, basket_page, balance_page, \
     authorization_page, add_auto_page
+
+schema_view = get_schema_view(
+   openapi.Info(
+      title="Outletavto",
+      default_version='v1',
+      description="Веб приложение outletavto",
+      terms_of_service=None,
+      contact=openapi.Contact(email="shamemask@ya.ru"),
+      license=None,
+   ),
+   public=True,
+   permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
     path('logout', logout, name='logout'),

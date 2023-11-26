@@ -17,16 +17,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from allauth.account.views import SignupView, LoginView
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
 
-from myapp.profile.UserDetailView import FizUserDetailView
+from myapp.profile.UserDetailView import FizUserDetailView, UrUserDetailView
 from myapp.views.profile_view import profile_view
 
+
+
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     # path('accounts/signup/', SignupView.as_view(), name='account_signup'),
     # path('accounts/login/', LoginView.as_view(), name='account_login'),
     # path('accounts/profile/', profile_view, name='account_profile'),
-    path('account/dashboard/', FizUserDetailView.as_view(), name='account_dashboard'),
+    path('account/dashboard/fiz/', FizUserDetailView.as_view(), name='fiz_user_detail_view'),
+    path('account/dashboard/ur/', UrUserDetailView.as_view(), name='ur_user_detail_view'),
     # path('accounts/', include('allauth.urls')),
     path('', include('myapp.urls')),
     path('api/', include('main_api.urls')),
