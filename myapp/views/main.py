@@ -16,6 +16,7 @@ from django.shortcuts import render
 @csrf_exempt
 def index(request):
     templ_dict = {}
+    template = 'index.html'
     templ_dict['page_title'] = 'OutletAvto'
     templ_dict['message'] = 'Запчасти в интернет-магазине'
     templ_dict.update(auth(request))
@@ -41,8 +42,10 @@ def index(request):
         'Велосипеды',
         'Туризм, рыбалка',
     ]
+    if not templ_dict['fizform'].is_valid() or not templ_dict['urform'].is_valid():
+        template = os.path.join('outletauto_page','registration_page.html')
     request.session.save()
-    return render(request, 'index.html', templ_dict)
+    return render(request, template, templ_dict)
 
 @csrf_exempt
 def catalog_page(request):
