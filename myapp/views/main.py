@@ -1,5 +1,7 @@
 import os
+from functools import wraps
 
+from django.contrib.auth.decorators import login_required
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
@@ -8,11 +10,22 @@ from authentication.views.main import auth
 from myapp.main_logic.news_parser import get_news,get_new
 from django.views.decorators.csrf import csrf_exempt
 import os
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
+
+def custom_login_required(function):
+    @wraps(function)
+    def wrap(request, *args, **kwargs):
+        # Ваша логика проверки аутентификации кастомного пользователя
+        if not request.user.is_authenticated:
+            return redirect('authorization_page')
+        return function(request, *args, **kwargs)
+    return wrap
 
 # @sync_to_async
 # @login_required
+
+
 @csrf_exempt
 def index(request):
     templ_dict = {}
@@ -44,8 +57,9 @@ def index(request):
     ]
     if templ_dict['fizform'].errors or templ_dict['urform'].errors:
         template = os.path.join('outletauto_page','registration_page.html')
-    request.session.save()
+    # request.session.save()
     return render(request, template, templ_dict)
+
 
 @csrf_exempt
 def catalog_page(request):
@@ -57,6 +71,7 @@ def catalog_page(request):
     return render(request, os.path.join('outletauto_page','catalog_page.html'), templ_dict)
 
 @csrf_exempt
+@custom_login_required
 def payment_page(request):
     templ_dict = {}
     templ_dict['page_title'] = 'Оплата заказа'
@@ -93,6 +108,7 @@ def authorization_page(request):
     request.session.save()
     return render(request, os.path.join('outletauto_page','authorization_page.html'), templ_dict)
 @csrf_exempt
+@custom_login_required
 def balance_page(request):
     templ_dict = {}
     templ_dict['page_title'] = 'Баланс'
@@ -101,6 +117,7 @@ def balance_page(request):
     request.session.save()
     return render(request, os.path.join('outletauto_page','balance_page.html'), templ_dict)
 @csrf_exempt
+@custom_login_required
 def basket_page(request):
     templ_dict = {}
     templ_dict['page_title'] = 'Корзина'
@@ -198,6 +215,7 @@ def passenger_car_info_page(request):
     templ_dict.update(auth(request))
     return render(request, os.path.join('outletauto_page','passenger-car-info_page.html'), templ_dict)
 @csrf_exempt
+@custom_login_required
 def profile_page(request):
     templ_dict = {}
     templ_dict['page_title'] = 'Профиль'

@@ -117,6 +117,7 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 MIDDLEWARE = [
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -132,7 +133,7 @@ else:
     SESSION_COOKIE_SECURE = True
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Используем базу данных для хранения сессий
-SESSION_EXPIRE_AT_BROWSER_CLOSE = False  # Установите True, чтобы сессия закрывалась при закрытии браузера
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Установите True, чтобы сессия закрывалась при закрытии браузера
 
 CSRF_TRUSTED_ORIGINS = ['http://5.63.155.57','https://outletavto.ru']  # Замените на свой домен или IP-адрес
 CSRF_COOKIE_SECURE = True
