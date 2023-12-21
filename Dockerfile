@@ -1,16 +1,24 @@
 # Определение базового образа
 FROM python:3.11-slim-buster
 
-# Установка инструментов для выполнения команд Poetry
-RUN apt-get update -y && apt-get install -y curl && \
-    curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+# Установим зависимости
+RUN apt-get update -y && apt-get install -y libpq-dev nginx mc
+
+# Настройка рабочей директории
+WORKDIR /srv/www/outletavto
+
+# Копирование зависимостей приложения
+COPY requirements.txt .
+
+# Установка зависимостей
+RUN python -m pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Копирование исходных файлов приложения
-WORKDIR /srv/www/outletavto
 COPY . .
 
-# Установка зависимостей с помощью Poetry
-RUN poetry install --no-root --no-interaction --no-ansi
+# Запуск миграций базы данных
+# RUN python manage.py migrate
 
 # Копирование статических файлов
 COPY static /srv/www/outletavto/static
@@ -20,3 +28,6 @@ RUN chmod -R 777 /srv/www/outletavto/static
 
 # Открытие порта
 EXPOSE 8000
+
+# Запуск Gunicorn
+# CMD uvicorn outletavto.asgi:application --config outletavto/myapp/gunicorn_config.py
