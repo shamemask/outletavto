@@ -26,12 +26,6 @@ ___
 
 ### РАЗВЕРТКА
 
-✅ Создать корневую папку с проектом (предлагается "hakaton") и перейти в неё
-
-```
-mkdir hakaton
-cd hakaton
-```
 
 ✅ Клонировать outletavto
 
@@ -57,6 +51,36 @@ git submodule update --init -f
 docker-compose up --build -d
 ```
 ## ЛИБО Развернуть локально
+
+# virtual env
+
+```cmd
+python -m venv venv
+```
+
+✅ linux
+```cmd
+source venv/bin/activate
+```
+
+✅ windows
+```cmd
+venv\Scripts\activate
+```
+
+# Установка зависимостей в виртуальной среде
+
+✅ linux
+```
+pip install -r requirements.txt
+```
+
+✅ windows
+```
+pip install -r requirements_win.txt
+```
+
+# Либо через Poetry
 
 ✅ Установить poetry ([Установка Poetry под Windows](https://teletype.in/@alenkimov/poetry))
 
