@@ -68,7 +68,7 @@ urlpatterns = [
     path('universal_catalog_tire_3', universal_catalog_tire_3_page, name='universal_catalog_tire_3_page'), # универсальный каталог
     path('universal_catalog_card', universal_catalog_card_page, name='universal_catalog_card_page'), # универсальный каталог
     path('confirm/', confirm_email, name='confirm_email'), # подтверждение почты
-    # path('accounts/', include('allauth.urls')), # подтверждение почты
+    path('accounts/', include('allauth.urls')), # подтверждение почты
     # path('api/', include('main_api.urls')),
-    # path('auth/', include('authentication.urls')),
+    path('auth/', include('authentication.urls'), name='auth'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

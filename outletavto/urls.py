@@ -34,7 +34,7 @@ urlpatterns = [
     # path('accounts/profile/', profile_view, name='account_profile'),
     path('account/dashboard/fiz/', FizUserDetailView.as_view(), name='fiz_user_detail_view'),
     path('account/dashboard/ur/', UrUserDetailView.as_view(), name='ur_user_detail_view'),
-    # path('accounts/', include('allauth.urls')),
+    path('accounts/', include('allauth.urls')),
     path('', include('myapp.urls')),
     path('api/', include('main_api.urls')),
 
