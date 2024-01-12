@@ -4,7 +4,6 @@ outletavto.ru
 
 ### ТЕХНОЛОГИИ
 
-HR Prakticum Career разработан с использованием следующих технологий:
 
 - [Python] (v.3.11) - целевой язык программирования backend
 - [Django] (v.4.2) - высокоуровневый веб-фреймворк
@@ -50,6 +49,7 @@ git submodule update --init -f
 ```
 docker-compose up --build -d
 ```
+
 ## ЛИБО Развернуть локально
 
 # virtual env

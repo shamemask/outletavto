@@ -4,7 +4,7 @@ from functools import wraps
 from django.contrib.auth.decorators import login_required
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-
+from abcp_parser.models import CatalogItem
 from authentication.UserModel import FizUser
 from authentication.views.main import auth
 from myapp.main_logic.news_parser import get_news,get_new
@@ -28,6 +28,10 @@ def custom_login_required(function):
 
 @csrf_exempt
 def index(request):
+    """
+    Главная страница сайта
+    """
+
     templ_dict = {}
     template = 'index.html'
     templ_dict['page_title'] = 'OutletAvto'
@@ -63,6 +67,9 @@ def index(request):
 
 @csrf_exempt
 def catalog_page(request):
+    """
+    Страница каталога
+    """
     templ_dict = {}
     templ_dict['page_title'] = 'Каталог'
     templ_dict['page_class'] = 'catalog'
@@ -71,8 +78,11 @@ def catalog_page(request):
     return render(request, os.path.join('outletauto_page','catalog_page.html'), templ_dict)
 
 @csrf_exempt
-@custom_login_required
+# @custom_login_required
 def payment_page(request):
+    """
+    Страница оплаты заказа
+    """
     templ_dict = {}
     templ_dict['page_title'] = 'Оплата заказа'
     templ_dict['page_class'] = 'payment'
@@ -82,6 +92,9 @@ def payment_page(request):
 
 @csrf_exempt
 def news_page(request):
+    """
+    Страница новостей
+    """
     templ_dict = {}
     templ_dict['page_title'] = 'Новости'
     templ_dict['page_class'] = 'news'
@@ -108,7 +121,7 @@ def authorization_page(request):
     request.session.save()
     return render(request, os.path.join('outletauto_page','authorization_page.html'), templ_dict)
 @csrf_exempt
-@custom_login_required
+# @custom_login_required
 def balance_page(request):
     templ_dict = {}
     templ_dict['page_title'] = 'Баланс'
@@ -117,7 +130,7 @@ def balance_page(request):
     request.session.save()
     return render(request, os.path.join('outletauto_page','balance_page.html'), templ_dict)
 @csrf_exempt
-@custom_login_required
+# @custom_login_required
 def basket_page(request):
     templ_dict = {}
     templ_dict['page_title'] = 'Корзина'
@@ -215,7 +228,7 @@ def passenger_car_info_page(request):
     templ_dict.update(auth(request))
     return render(request, os.path.join('outletauto_page','passenger-car-info_page.html'), templ_dict)
 @csrf_exempt
-@custom_login_required
+# @custom_login_required
 def profile_page(request):
     templ_dict = {}
     templ_dict['page_title'] = 'Профиль'
@@ -225,7 +238,10 @@ def profile_page(request):
     profile_dict = {}
     for field in fields:
         if field.name not in ['_state', 'id', 'last_login','password', 'promo_code','terms_of_service','is_active']:
-            profile_dict[field.name] = [templ_dict['user'].__dict__[field.name],field.verbose_name]
+            profile_dict[field.name] = [
+                templ_dict['user'].__dict__[field.name],
+                field.verbose_name
+            ]
         if field.name == 'password':
             profile_dict[field.verbose_name] = ['********',field.verbose_name]
     templ_dict['profile_dict'] = profile_dict

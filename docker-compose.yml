@@ -8,7 +8,7 @@ services:
       bash -c "
         python manage.py makemigrations &&
         python manage.py migrate &&
-        echo \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', 'shamemask@ya.ru', 'yfMhL7PiOB30M9WN')\" | python manage.py shell &&
+        echo \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='${{ secrets.SUPERUSER_NAME }}').exists() or User.objects.create_superuser('${{ secrets.SUPERUSER_NAME }}', '${{ secrets.SUPERUSER_EMAIL }}', '${{ secrets.SUPERUSER_PASSWORD }}')\" | python manage.py shell &&
         gunicorn --bind 0.0.0.0:8000 outletavto.wsgi:application
       "
     volumes:
@@ -18,19 +18,21 @@ services:
     ports:
       - 8000:8000
     environment:
-      - POSTGRES_DB=outletavto
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=yfMhL7PiOB30M9WN
+      - POSTGRES_DB=${{ secrets.POSTGRES_DB }}
+      - POSTGRES_USER=${{ secrets.POSTGRES_USER }}
+      - POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
     depends_on:
       - db
+# Добавляем запуск cron
+    command: bash -c "echo '0 3 * * * /usr/local/bin/python /code/manage.py my_custom_command' | crontab - && crond -f"
 
   db:
     restart: always
     image: postgres:latest
     environment:
-      - POSTGRES_DB=outletavto
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=yfMhL7PiOB30M9WN
+      - POSTGRES_DB=${{ secrets.POSTGRES_DB }}
+      - POSTGRES_USER=${{ secrets.POSTGRES_USER }}
+      - POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
     volumes:
       - db_data:/var/lib/postgresql/data/
 

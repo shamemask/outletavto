@@ -9,3 +9,6 @@
 [submodule "main_api"]
 	path = main_api
 	url = https://github.com/shamemask/outletavto_api_django.git
+[submodule "abcp_parser"]
+	path = abcp_parser
+	url = https://github.com/shamemask/abcp_parser.git

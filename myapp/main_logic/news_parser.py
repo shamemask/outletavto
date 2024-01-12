@@ -3,6 +3,9 @@ import requests
 from bs4 import BeautifulSoup
 
 def get_news(url):
+    """
+    Функция для получения новостей с сайта dvizhok.su.
+    """
     feed = feedparser.parse(url)  # Парсим RSS-фид.
     news = []
     # Получаем новости из RSS-фида и добавляем их в список news.
@@ -16,6 +19,9 @@ def get_news(url):
     return news
 
 def get_news_autoparts(url):
+    """
+    Функция для получения новостей с сайта autoparts.webnode.page.
+    """
     feed = feedparser.parse(url)  # Парсим RSS-фид.
     news = []
     # Получаем новости из RSS-фида и добавляем их в список news.
@@ -29,6 +35,9 @@ def get_news_autoparts(url):
     return news
 
 def get_new_autoparts(url):
+    """
+    Функция для получения новости с сайта autoparts.webnode.page.
+    """
     response = requests.get(url)
     page_content = response.content
     soup = BeautifulSoup(page_content, 'html.parser')
@@ -46,6 +55,9 @@ def get_new_autoparts(url):
         text += span.text + ' '
 
 def get_new(url):
+    """
+    Функция для получения новости с сайта autoparts.webnode.page.
+    """
     response = requests.get(url)
     page_content = response.content
     soup = BeautifulSoup(page_content, 'html.parser')

@@ -37,6 +37,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('myapp.urls')),
     path('api/', include('main_api.urls')),
+    path('parser/', include('abcp_parser.urls')),
 
     
 ]
