@@ -16,6 +16,9 @@ from os.path import isfile, join
 import os
 import mimetypes
 
+def is_in_docker():
+    return os.getenv('DOCKER_CONTAINER') == 'true'
+
 mimetypes.add_type("text/css", ".css")
 mimetypes.add_type("image/svg+xml", ".svg")
 
@@ -128,10 +131,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-if str(BASE_DIR) == 'C:\projOutlet\outletavto':
-    SESSION_COOKIE_SECURE = False  # Установите True для использования HTTPS
+if is_in_docker():
+    SESSION_COOKIE_SECURE = True  # Установите True для использования HTTPS
 else:
-    SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = False
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Используем базу данных для хранения сессий
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True  # Установите True, чтобы сессия закрывалась при закрытии браузера
@@ -156,15 +159,18 @@ EMAIL_USE_SSL = False
 DEFAULT_FROM_EMAIL = 'snab061@bk.ru'  # Укажите почту отправителя
 ROOT_URLCONF = 'outletavto.urls'
 
-if str(BASE_DIR) == 'C:\projOutlet\outletavto':
+if is_in_docker():
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'outletavto',
             'USER': 'admin',
             'PASSWORD': 'yfMhL7PiOB30M9WN',
-            'HOST': 'localhost',
+            'HOST': 'db',
             'PORT': '5432',
+            'OPTIONS': {
+                'client_encoding': 'UTF8',  # Ensure it matches your data encoding
+            },
         }
     }
 else:
@@ -174,7 +180,7 @@ else:
             'NAME': 'outletavto',
             'USER': 'admin',
             'PASSWORD': 'yfMhL7PiOB30M9WN',
-            'HOST': 'db',
+            'HOST': 'localhost',
             'PORT': '5432',
         }
     }
@@ -238,17 +244,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-if str(BASE_DIR) == 'C:\projOutlet\outletavto':
+if is_in_docker():
+    STATIC_ROOT = '/srv/www/outletavto/static/'
+    DEBUG = True
+
+else:
     # SECURITY WARNING: don't run with debug turned on in production!
     DEBUG = True
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, "static"),
         os.path.join(BASE_DIR, "images"),
     ]
-
-else:
-    STATIC_ROOT = '/srv/www/outletavto/static/'
-    DEBUG = True
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
