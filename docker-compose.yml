@@ -24,7 +24,7 @@ services:
     depends_on:
       - db
 # Добавляем запуск cron
-    command: bash -c "echo '0 3 * * * /usr/local/bin/python /code/manage.py my_custom_command' | crontab - && crond -f"
+#    command: bash -c "echo '0 3 * * * /usr/local/bin/python /code/manage.py my_custom_command' | crontab - && crond -f"
 
   db:
     restart: always
