@@ -109,6 +109,8 @@ pip install psycopg2
 ```
 python manage.py makemigrations
 python manage.py migrate
+python manage.py makemigrations abcp_parser
+python manage.py migrate abcp_parser
 ```
 
 ✅ Запустить сервер
@@ -122,4 +124,12 @@ python manage.py runserver
 ```
 http://localhost:8000/
 ```
+
+# Для настройки парсера
+
+✅ Скачать geeckodriver со страницы https://github.com/mozilla/geckodriver/releases/
+
+## Для Windows
+✅ скопировать файл geckodriver.exe в директорию C:\Windows\System32
+
 
