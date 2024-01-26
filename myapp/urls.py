@@ -8,14 +8,37 @@ from rest_framework import permissions
 from authentication.views.email import send_confirmation_email, confirm_email
 from authentication.views.logout import logout
 from main_api.views import AsyncCatalog
-from .views.main import index, html, catalog_page, payment_page, news_page, universal_catalog_card_page, \
-    universal_catalog_tire_3_page, universal_catalog_tire_2_page, universal_catalog_tire_page, universal_catalog_page, \
-    testfilter_page, testcalendar_page, self_call_page, registration_page, recovery_page, promotion_page, profile_page, \
-    passenger_car_info_page, passenger_car_page, orders_page, news_page_page, modification_page, garage_page, \
-    favorite_page, company_page, club_page, catalog_personal_account_page, call_to_vin_page, basket_page, balance_page, \
-    authorization_page, add_auto_page
-
-
+from .views.add_auto import add_auto_page
+from .views.authorization import authorization_page
+from .views.balance import balance_page
+from .views.basket import basket_page
+from .views.call_to_vin import call_to_vin_page
+from .views.catalog import catalog_page
+from .views.catalog_personal_account import catalog_personal_account_page
+from .views.club import club_page
+from .views.company import company_page
+from .views.favorite import favorite_page
+from .views.garage import garage_page
+from .views.main import index
+from .views.modification import modification_page
+from .views.news import news_page
+from .views.news_page import news_page_page
+from .views.orders import orders_page
+from .views.passenger_car import passenger_car_page
+from .views.passenger_car_info import passenger_car_info_page
+from .views.payment import payment_page
+from .views.profile import profile_page
+from .views.promotion import promotion_page
+from .views.recovery import recovery_page
+from .views.registration import registration_page
+from .views.self_call import self_call_page
+from .views.testcalendar import testcalendar_page
+from .views.testfilter import testfilter_page
+from .views.universal_catalog import universal_catalog_page
+from .views.universal_catalog_card import universal_catalog_card_page
+from .views.universal_catalog_tire import universal_catalog_tire_page
+from .views.universal_catalog_tire_2 import universal_catalog_tire_2_page
+from .views.universal_catalog_tire_3 import universal_catalog_tire_3_page
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -68,7 +91,7 @@ urlpatterns = [
     path('universal_catalog_tire_3', universal_catalog_tire_3_page, name='universal_catalog_tire_3_page'), # универсальный каталог
     path('universal_catalog_card', universal_catalog_card_page, name='universal_catalog_card_page'), # универсальный каталог
     path('confirm/', confirm_email, name='confirm_email'), # подтверждение почты
-    path('accounts/', include('allauth.urls')), # подтверждение почты
+    # path('accounts/', include('allauth.urls')), # подтверждение почты
     # path('api/', include('main_api.urls')),
-    path('auth/', include('authentication.urls'), name='auth'),
+    # path('auth/', include('authentication.urls'), name='auth'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
