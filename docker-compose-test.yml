@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  python:
+    restart: always
+    build: .
+    command: >
+      bash -c "
+        python manage.py makemigrations &&
+        python manage.py migrate &&
+        python manage.py makemigrations authentication &&
+        python manage.py migrate authentication &&
+        python manage.py makemigrations abcp_parser &&
+        python manage.py migrate abcp_parser &&
+        echo \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', 'shamemask@ya.ru', 'yfMhL7PiOB30M9WN')\" | python manage.py shell &&
+        gunicorn --bind 0.0.0.0:8000 --workers 3 outletavto.wsgi:application
+      "
+    volumes:
+      - static_volume:/srv/www/outletavto/static/
+    expose:
+      - 8000
+    ports:
+      - 8000:8000
+    environment:
+      - DOCKER_CONTAINER=true
+      - POSTGRES_DB=outletavto
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=yfMhL7PiOB30M9WN
+    depends_on:
+      - db
+      
+  db:
+    restart: always
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=outletavto
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=yfMhL7PiOB30M9WN
+    volumes:
+      - db_data:/var/lib/postgresql/data/
+
+  nginx:
+    restart: always
+    image: nginx:latest
+    expose:
+      - 8080
+      - 443
+    ports:
+      - "80:8080"
+      - "443:443"
+    depends_on:
+      - python
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - static_volume:/srv/www/outletavto/static/
+
+volumes:
+  ssl_volume:
+  static_volume:
+  db_data:
