@@ -80,25 +80,6 @@ pip install -r requirements.txt
 pip install -r requirements_win.txt
 ```
 
-# Либо через Poetry
-
-✅ Установить poetry ([Установка Poetry под Windows](https://teletype.in/@alenkimov/poetry))
-
-```cmd
-curl -sSL https://install.python-poetry.org | python -
-```
-
-✅ Установить зависимости
-
-```
-poetry install --no-root --no-interaction --no-ansi
-```
-
-✅ Войти в виртуальную среду
-```
-poetry shell
-```
-
 ✅ Установить конфликтную билиотеку
 ```
 pip install psycopg2 
