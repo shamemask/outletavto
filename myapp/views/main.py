@@ -58,7 +58,7 @@ def logic(request, web_or_api='web'):
     # request.session.save()
     return templ_dict
 
-@api_view(['POST'])
+@api_view(['GET','POST'])
 @csrf_exempt
 def index_api(request):
     templ_dict = logic(request, 'api')
