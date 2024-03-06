@@ -8,6 +8,10 @@ services:
       bash -c "
         python manage.py makemigrations &&
         python manage.py migrate &&
+        python manage.py makemigrations authentication &&
+        python manage.py migrate authentication &&
+        python manage.py makemigrations abcp_parser &&
+        python manage.py migrate abcp_parser &&
         echo \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='${{ secrets.SUPERUSER_NAME }}').exists() or User.objects.create_superuser('${{ secrets.SUPERUSER_NAME }}', '${{ secrets.SUPERUSER_EMAIL }}', '${{ secrets.SUPERUSER_PASSWORD }}')\" | python manage.py shell &&
         gunicorn --bind 0.0.0.0:8000 outletavto.wsgi:application
       "
