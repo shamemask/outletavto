@@ -12,7 +12,7 @@ services:
         python manage.py migrate authentication &&
         python manage.py makemigrations abcp_parser &&
         python manage.py migrate abcp_parser &&
-        echo \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='${{ secrets.SUPERUSER_NAME }}').exists() or User.objects.create_superuser('${{ secrets.SUPERUSER_NAME }}', '${{ secrets.SUPERUSER_EMAIL }}', '${{ secrets.SUPERUSER_PASSWORD }}')\" | python manage.py shell &&
+        echo \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='$${{ secrets.SUPERUSER_NAME }}').exists() or User.objects.create_superuser('$${{ secrets.SUPERUSER_NAME }}', '$${{ secrets.SUPERUSER_EMAIL }}', '$${{ secrets.SUPERUSER_PASSWORD }}')\" | python manage.py shell &&
         gunicorn --bind 0.0.0.0:8000 outletavto.wsgi:application
       "
     volumes:
@@ -23,9 +23,9 @@ services:
       - 8000:8000
     environment:
       - DOCKER_CONTAINER=true
-      - POSTGRES_DB=${{ secrets.POSTGRES_DB }}
-      - POSTGRES_USER=${{ secrets.POSTGRES_USER }}
-      - POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+      - POSTGRES_DB=$${{ secrets.POSTGRES_DB }}
+      - POSTGRES_USER=$${{ secrets.POSTGRES_USER }}
+      - POSTGRES_PASSWORD=$${{ secrets.POSTGRES_PASSWORD }}
     depends_on:
       - db
 # Добавляем запуск cron
@@ -35,9 +35,9 @@ services:
     restart: always
     image: postgres:latest
     environment:
-      - POSTGRES_DB=${{ secrets.POSTGRES_DB }}
-      - POSTGRES_USER=${{ secrets.POSTGRES_USER }}
-      - POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+      - POSTGRES_DB=$${{ secrets.POSTGRES_DB }}
+      - POSTGRES_USER=$${{ secrets.POSTGRES_USER }}
+      - POSTGRES_PASSWORD=$${{ secrets.POSTGRES_PASSWORD }}
     volumes:
       - db_data:/var/lib/postgresql/data/
 
