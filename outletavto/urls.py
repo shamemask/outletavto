@@ -36,6 +36,7 @@ urlpatterns = [
     path('account/dashboard/ur/', UrUserDetailView.as_view(), name='ur_user_detail_view'),
     path('accounts/', include('allauth.urls')),
     path('', include('myapp.urls')),
+    path('api/v1/', include('myapp.urls_api')),
     path('api/', include('main_api.urls')),
     path('parser/', include('abcp_parser.urls')),
 
