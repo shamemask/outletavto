@@ -12,8 +12,8 @@ services:
         python manage.py migrate authentication &&
         python manage.py makemigrations abcp_parser &&
         python manage.py migrate abcp_parser &&
-        echo \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='admin').exists() or User.objects.create_superuser('admin', 'shamemask@ya.ru', 'yfMhL7PiOB30M9WN')\" | python manage.py shell &&
-        gunicorn --bind 0.0.0.0:8000 --workers 3 outletavto.wsgi:application
+        echo \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='$${{ secrets.SUPERUSER_NAME }}').exists() or User.objects.create_superuser('$${{ secrets.SUPERUSER_NAME }}', '$${{ secrets.SUPERUSER_EMAIL }}', '$${{ secrets.SUPERUSER_PASSWORD }}')\" | python manage.py shell &&
+        gunicorn --bind 0.0.0.0:8000 outletavto.wsgi:application
       "
     volumes:
       - static_volume:/srv/www/outletavto/static/
@@ -23,19 +23,21 @@ services:
       - 8000:8000
     environment:
       - DOCKER_CONTAINER=true
-      - POSTGRES_DB=outletavto
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=yfMhL7PiOB30M9WN
+      - POSTGRES_DB=$${{ secrets.POSTGRES_DB }}
+      - POSTGRES_USER=$${{ secrets.POSTGRES_USER }}
+      - POSTGRES_PASSWORD=$${{ secrets.POSTGRES_PASSWORD }}
     depends_on:
       - db
-      
+# Добавляем запуск cron
+#    command: bash -c "echo '0 3 * * * /usr/local/bin/python /code/manage.py my_custom_command' | crontab - && crond -f"
+
   db:
     restart: always
     image: postgres:latest
     environment:
-      - POSTGRES_DB=outletavto
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=yfMhL7PiOB30M9WN
+      - POSTGRES_DB=$${{ secrets.POSTGRES_DB }}
+      - POSTGRES_USER=$${{ secrets.POSTGRES_USER }}
+      - POSTGRES_PASSWORD=$${{ secrets.POSTGRES_PASSWORD }}
     volumes:
       - db_data:/var/lib/postgresql/data/
 
