@@ -142,6 +142,11 @@ MIDDLEWARE = [
 
 CORS_ORIGIN_ALLOW_ALL = True
 
+CORS_ALLOW_HEADERS = [
+    'access-control-allow-origin',
+    'content-type',
+]
+
 if is_in_docker():
     SESSION_COOKIE_SECURE = True  # Установите True для использования HTTPS
 else:
