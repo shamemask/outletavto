@@ -133,12 +133,10 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-# CORS_ALLOWED_ORIGINS = [
-#     "http://localhost:3000",
-#     "http://127.0.0.1:3000",
-#     "http://195.16.111.4:3000",
-#     "https://outletavto.ru",
-# ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://localhost:3000",  # Add the HTTPS version
+]
 
 CORS_ORIGIN_ALLOW_ALL = True
 
