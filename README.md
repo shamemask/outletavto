@@ -80,11 +80,6 @@ pip install -r requirements.txt
 pip install -r requirements_win.txt
 ```
 
-✅ Установить конфликтную билиотеку
-```
-pip install psycopg2 
-```
-
 ✅ Выполнить миграцию
 
 ```

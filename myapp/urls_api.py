@@ -19,7 +19,7 @@ from .views.club import club_page
 from .views.company import company_page
 from .views.favorite import favorite_page
 from .views.garage import garage_page
-from .views.main import index_api
+from .views.main import AuthView
 from .views.modification import modification_page
 from .views.news import news_page
 from .views.news_page import news_page_page
@@ -57,7 +57,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     # path('logout', logout, name='logout'), # выход
-    path('', index_api), # главная
+    path('', AuthView.as_view()), # главная
     # path('catalog', catalog_page, name='catalog_page'), # каталог
     # path('catalog2', AsyncCatalog.as_view(), name='catalog_api'), # каталог с асинхронным запросом
     # path('payment', payment_page, name='payment_page'), # оплата

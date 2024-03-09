@@ -34,15 +34,7 @@ SECRET_KEY = 'django-insecure-p)ophp_2lp@h27(jlomu&%v64lq=s%$_c6mv(&tzqeu=npim54
 
 
 
-ALLOWED_HOSTS = [
-    '31-31-202-90.cloudvps.regruhosting.ru',
-    '[2a00:f940:2:4:2::4645]',
-    'xn--061-3edaa.xn--p1ai',
-    'outletavto-shamemask.b4a.run',
-    '127.0.0.1','31.31.202.90',
-    'outletavto.ru',
-    'localhost'
-]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -71,6 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'rest_framework',
     'myapp',
     'main_api',
     'abcp_parser',
@@ -86,6 +79,9 @@ INSTALLED_APPS = [
     'drf_yasg',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework.authentication.SessionAuthentication',],
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated',],}
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
@@ -133,17 +129,13 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "https://localhost:3000",  # Add the HTTPS version
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "https://localhost:3000",  # Add the HTTPS version
+# ]
 
 CORS_ORIGIN_ALLOW_ALL = True
-
-CORS_ALLOW_HEADERS = [
-    'access-control-allow-origin',
-    'content-type',
-]
+CORS_ALLOW_CREDENTIALS = True
 
 if is_in_docker():
     SESSION_COOKIE_SECURE = True  # Установите True для использования HTTPS
