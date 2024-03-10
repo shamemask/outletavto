@@ -41,7 +41,7 @@ cd outletavto
 ✅ Загрузить сабмодули
 
 ```
-git submodule update --init -f
+git submodule update --init --recursive
 ```
 
 ✅ Развернуть через docker
