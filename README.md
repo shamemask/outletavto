@@ -85,6 +85,8 @@ pip install -r requirements_win.txt
 ```
 python manage.py makemigrations
 python manage.py migrate
+python manage.py makemigrations authentication
+python manage.py migrate authentication
 python manage.py makemigrations abcp_parser
 python manage.py migrate abcp_parser
 ```
