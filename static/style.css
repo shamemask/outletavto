@@ -1,19 +1,19 @@
 .container {
-position: relative;
-max-width: 100%;
-color: white;
+    position: relative;
+    max-width: 100%;
+    color: white;
 }
 
 .container img {
-display: block;
-width: 100%;
-height: auto;
+    display: block;
+    width: 100%;
+    height: auto;
 }
-.container ul{
+.container ul {
     position: absolute;
     z-index: 1;
 }
 
-a:link{
-    color:white;
+a:link {
+    color: white;
 }
