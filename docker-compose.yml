@@ -36,8 +36,10 @@ services:
       - POSTGRES_DB=outletavto
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=yfMhL7PiOB30M9WN
+      - PGCLIENTENCODING=utf-8
     volumes:
       - db_data:/var/lib/postgresql/data/
+      - ./backup.sql:/backup.sql
 
   nginx:
     restart: always
